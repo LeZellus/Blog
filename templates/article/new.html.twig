@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un article | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1 class="title-primary">Créer un article</h1>
+
+    {{ include('article/_form.html.twig') }}
+{% endblock %}

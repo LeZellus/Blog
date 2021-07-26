@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer un article | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <section class="grid gap-12">
+        <h1 class="title-primary">Éditer un article</h1>
+
+        {{ include('article/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+        {{ include('article/_delete_form.html.twig') }}
+    </section>
+{% endblock %}
