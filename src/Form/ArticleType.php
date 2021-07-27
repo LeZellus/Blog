@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Category;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,6 +23,12 @@ class ArticleType extends AbstractType
             ])
             ->add('content', TextType::class, [
                 'required' => false,
+            ])
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'required' => false,
+                'choice_label' => 'name',
+                'multiple' => false,
             ])
         ;
     }
