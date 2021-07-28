@@ -7,7 +7,8 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
-import 'animate.css/animate.min.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 tinymce.init({
     selector: '.editor',
@@ -15,27 +16,46 @@ tinymce.init({
     toolbar_mode: 'floating',
 });
 
+AOS.init();
 
-if (document.body.classList.contains('copy')){
-    console.log("oui")
-}else {
-    console.log("non")
+if (document.querySelector('.copy')) {
+    let button = document.querySelector('.copy');
+
+    button.addEventListener('click', function () {
+        /* Get the text field */
+        var copyText = document.getElementById("copyInput");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        /* Alert the copied text */
+        button.innerHTML = "Copié !";
+
+        setTimeout(function () {
+            button.innerHTML = "Copier le lien de partage";
+        }, 3000);
+    })
 }
-let button = document.querySelector('.copy');
 
-button.addEventListener('click', function(){
-    /* Get the text field */
-    var copyText = document.getElementById("copyInput");
+if (document.querySelector('#burgerButton')) {
+    let burgerButton = document.querySelector('#burgerButton');
+    let closeButton = document.querySelector('#closeButton');
+    let menuMobile = document.querySelector('#mobileMenu')
 
-    /* Select the text field */
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    burgerButton.addEventListener('click', function () {
+        menuMobile.classList.remove('hidden');
+        burgerButton.classList.add('hidden');
+        closeButton.classList.remove('hidden');
+    })
+    closeButton.addEventListener('click', function () {
+        menuMobile.classList.add('hidden');
+        closeButton.classList.add('hidden');
+        burgerButton.classList.remove('hidden');
+    })
+}
 
-    /* Copy the text inside the text field */
-    document.execCommand("copy");
 
-    /* Alert the copied text */
-    button.innerHTML = "Copié !";
-
-    setTimeout(function(){ button.innerHTML = "Copier le lien de partage"; }, 3000);
-})

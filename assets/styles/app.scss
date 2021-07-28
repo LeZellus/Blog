@@ -31,4 +31,8 @@ html {
   p {
     @apply leading-7 text-xl text-gray-800;
   }
+
+  img {
+    @apply my-8 rounded-lg shadow-lg w-full;
+  }
 }

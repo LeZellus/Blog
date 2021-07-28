@@ -18,7 +18,7 @@
                     <div>
                         <div class="mb-2">
                             <a href="/"
-                               class="text-xs font-semibold tracking-wide uppercase transition-colors duration-200 {{ article.category.colorText }} hover:text-custom-800"
+                               class="text-xs rounded-lg py-1 px-2 font-semibold tracking-wide uppercase transition-colors duration-200 {{ article.category.colorText }} hover:text-custom-800 {{ article.category.colorBackground }}"
                                aria-label="Category" title="{{ article.category.name }}">{{ article.category.name }}</a>
                         </div>
                         <div class="mb-2">
@@ -28,7 +28,7 @@
                         <p class="mb-5 text-gray-700">{{ article.chapo }}</p>
                         <div class="flex items-center">
                             <a href="/" aria-label="Author" title="Author" class="mr-3">
-                                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+                                <img src="{{ asset('images/website/LeZellus-avatar.svg')}}"
                                      alt="avatar" class="object-cover w-10 h-10 rounded-full shadow-sm"/>
                             </a>
                             <div>
