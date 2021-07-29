@@ -1,0 +1,70 @@
+<footer class="pt-16">
+    <div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="sm:col-span-2">
+            <a href="/" aria-label="Go home" title="Company" class="inline-flex items-center">
+                <img class="w-8 text-custom-400" src="{{ asset('images/website/logo.svg') }}" alt="Logo Xipel">
+                <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">Xipel</span>
+            </a>
+            <div class="mt-6 lg:max-w-sm">
+                <p class="text-sm text-gray-800">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+                </p>
+                <p class="mt-4 text-sm text-gray-800">
+                    Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                </p>
+            </div>
+        </div>
+        <div class="space-y-2 text-sm">
+            <p class="text-base font-bold tracking-wide text-gray-900">Contacts</p>
+            <div class="flex">
+                <a href="{{ path('contact') }}" aria-label="Our phone" title="Our phone" class="transition-colors duration-300 text-custom-400 hover:text-custom-800">Envoyer un mail</a>
+            </div>
+            <div class="flex">
+                <p class="mr-1 text-gray-800">Email :</p>
+                <a href="mailto:matheo.zeller@gmail.com" aria-label="Our email" title="Our email" class="transition-colors duration-300 text-custom-400 hover:text-custom-800">matheo.zeller@gmail.com</a>
+            </div>
+            <div class="flex">
+                <p class="mr-1 text-gray-800">Adresse :</p>
+                <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" aria-label="Our address" title="Our address" class="transition-colors duration-300 text-custom-400 hover:text-custom-800">
+                    12 000, Rodez.
+                </a>
+            </div>
+        </div>
+        <div>
+            <span class="text-base font-bold tracking-wide text-gray-900">Social</span>
+            <div class="flex items-center mt-1 space-x-3">
+                <a href="/" class="text-gray-500 text-3xl transition-colors duration-300 hover:text-custom-400">
+                    <i class="ph-discord-logo"></i>
+                </a>
+                <a href="/" class="text-gray-500 text-3xl transition-colors duration-300 hover:text-custom-400">
+                    <i class="ph-twitter-logo"></i>
+                </a>
+                <a href="/" class="text-gray-500 text-3xl transition-colors duration-300 hover:text-custom-400">
+                    <i class="ph-facebook-logo"></i>
+                </a>
+            </div>
+            <p class="mt-4 text-sm text-gray-500">
+                Retrouvez nous sur les réseaux !
+            </p>
+        </div>
+    </div>
+    <div class="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
+        <p class="text-sm text-gray-600">
+            © Copyright 2021 Xipel Game. Tout droits réservés.
+        </p>
+        <ul class="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
+            <li>
+                <a href="{{ path('log_index') }}" class="text-sm text-gray-600 transition-colors duration-300 hover:text-custom-400">Mises à jour</a>
+            </li>
+            <li>
+                <a href="/" class="text-sm text-gray-600 transition-colors duration-300 hover:text-custom-400">F.A.Q</a>
+            </li>
+            <li>
+                <a href="/" class="text-sm text-gray-600 transition-colors duration-300 hover:text-custom-400">Politique de confidentialité</a>
+            </li>
+            <li>
+                <a href="/" class="text-sm text-gray-600 transition-colors duration-300 hover:text-custom-400">Termes &amp; Conditions</a>
+            </li>
+        </ul>
+    </div>
+</footer>
