@@ -43,93 +43,47 @@
         <!-- Mobile menu -->
         <div class="lg:hidden">
             <button aria-label="Open Menu" title="Open Menu" id="burgerButton"
-                    class="p-2 -mr-1 transition duration-200 rounded-lg focus:outline-none focus:shadow-outline hover:bg-custom-50 focus:bg-custom-50">
-                <svg class="w-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
-                </svg>
+                    class="p-2 -mr-1 transition duration-200 rounded-lg focus:outline-none focus:shadow-outline hover:bg-custom-50 focus:bg-custom-50 flex items-center">
+                <i class="text-4xl text-gray-600 ph-squares-four"></i>
             </button>
 
             <button aria-label="Close Menu" title="Close Menu" id="closeButton"
-                    class="hidden p-2 -mr-1 transition duration-200 rounded-lg hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                <svg class="w-8 text-gray-600" viewBox="0 0 24 24">
-                    <path fill="currentColor"
-                          d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
-                    ></path>
-                </svg>
+                    class="hidden p-2 -mr-1 transition duration-200 rounded-lg hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex items-center">
+                <i class="text-4xl text-gray-600 ph-x-square"></i>
             </button>
 
-            <div class="hidden grid grid-cols-4 gap-y-8 absolute top-16 left-0 w-full p-4 bg-white border rounded-lg"
+            <div class="hidden grid grid-cols-2 sm:grid-cols-4 gap-y-4 absolute top-16 left-0 w-full p-4 bg-white border rounded-lg"
                  id="mobileMenu">
 
                 <a href="/"
                    class="flex flex-col items-center justify-center text-gray-600 uppercase hover:bg-gray-200 py-2 rounded-lg transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="#26a69a"
-                         viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
-                        <path d="M216,216V115.53887a8,8,0,0,0-2.6185-5.91942L133.376,36.88436a8,8,0,0,0-10.76339.00036l-79.9945,72.73477A8,8,0,0,0,40,115.53855V216"
-                              fill="none" stroke="#26a69a" stroke-linecap="round" stroke-linejoin="round"
-                              stroke-width="16"></path>
-                        <line x1="16" y1="216" x2="240" y2="216" fill="none" stroke="#26a69a" stroke-linecap="round"
-                              stroke-linejoin="round" stroke-width="16"></line>
-                        <path d="M151.99414,215.99158v-56a8,8,0,0,0-8-8h-32a8,8,0,0,0-8,8v56" fill="none"
-                              stroke="#26a69a" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-                    </svg>
+                    <i class="text-4xl text-custom-500 ph-house-line"></i>
                     <span class="text-xs font-semibold">Accueil</span>
                 </a>
-                <a href="/"
+                <a href="{{ path('article_index') }}"
                    class="flex flex-col items-center justify-center text-gray-600 uppercase hover:bg-gray-200 py-2 rounded-lg transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="#26a69a"
-                         viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
-                        <rect x="40" y="40" width="48" height="176" rx="8" stroke-width="16" stroke="#26a69a"
-                              stroke-linecap="round" stroke-linejoin="round" fill="none"></rect>
-                        <line x1="40" y1="80" x2="88" y2="80" fill="none" stroke="#26a69a" stroke-linecap="round"
-                              stroke-linejoin="round" stroke-width="16"></line>
-                        <rect x="88" y="40" width="48" height="176" rx="8" stroke-width="16" stroke="#26a69a"
-                              stroke-linecap="round" stroke-linejoin="round" fill="none"></rect>
-                        <line x1="88" y1="176" x2="136" y2="176" fill="none" stroke="#26a69a" stroke-linecap="round"
-                              stroke-linejoin="round" stroke-width="16"></line>
-                        <rect x="158" y="38.58284" width="48" height="176" rx="8"
-                              transform="matrix(0.96593, -0.25882, 0.25882, 0.96593, -26.56055, 51.41827)"
-                              stroke-width="16" stroke="#26a69a" stroke-linecap="round" stroke-linejoin="round"
-                              fill="none"></rect>
-                        <line x1="171.24109" y1="179.15894" x2="217.60553" y2="166.73563" fill="none" stroke="#26a69a"
-                              stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-                        <line x1="146.39447" y1="86.43006" x2="192.75891" y2="74.00675" fill="none" stroke="#26a69a"
-                              stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-                    </svg>
+                    <i class="text-4xl text-custom-500 ph-books"></i>
                     <span class="text-xs font-semibold">Articles</span>
                 </a>
                 <a href="/"
                    class="flex flex-col items-center justify-center text-gray-600 uppercase hover:bg-gray-200 py-2 rounded-lg transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="#26a69a"
-                         viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
-                        <circle cx="128" cy="96" r="64" fill="none" stroke="#26a69a" stroke-miterlimit="10"
-                                stroke-width="16"></circle>
-                        <path d="M30.989,215.99064a112.03731,112.03731,0,0,1,194.02311.002" fill="none" stroke="#26a69a"
-                              stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-                    </svg>
+                    <i class="text-4xl text-custom-600 ph-user"></i>
                     <span class="text-xs font-semibold">Profil</span>
                 </a>
                 <a href="{{ path('contact') }}"
                    class="flex flex-col items-center justify-center text-gray-600 uppercase hover:bg-gray-200 py-2 rounded-lg transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="#26a69a"
-                         viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
-                        <polyline points="224 56 128 144 32 56" fill="none" stroke="#26a69a" stroke-linecap="round"
-                                  stroke-linejoin="round" stroke-width="16"></polyline>
-                        <path d="M32,56H224a0,0,0,0,1,0,0V192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V56A0,0,0,0,1,32,56Z"
-                              fill="none" stroke="#26a69a" stroke-linecap="round" stroke-linejoin="round"
-                              stroke-width="16"></path>
-                        <line x1="110.54541" y1="128.00013" x2="34.4668" y2="197.73926" fill="none" stroke="#26a69a"
-                              stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-                        <line x1="221.53418" y1="197.73926" x2="145.45424" y2="127.99964" fill="none" stroke="#26a69a"
-                              stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-                    </svg>
+                    <i class="text-4xl text-custom-600 ph-envelope"></i>
                     <span class="text-xs font-semibold">Contact</span>
+                </a>
+                <a href="{{ path('log_index') }}"
+                   class="flex flex-col items-center justify-center text-gray-600 uppercase hover:bg-gray-200 py-2 rounded-lg transition duration-300">
+                    <i class="text-4xl text-custom-600 ph-gear"></i>
+                    <span class="text-xs font-semibold">Updates</span>
+                </a>
+                <a href="{{ path('category_index') }}"
+                   class="flex flex-col items-center justify-center text-gray-600 uppercase hover:bg-gray-200 py-2 rounded-lg transition duration-300">
+                    <i class="text-4xl text-custom-600 ph-folder-open"></i>
+                    <span class="text-xs font-semibold">Catégories</span>
                 </a>
             </div>
         </div>

@@ -9,6 +9,7 @@
 import './styles/app.scss';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import 'phosphor-icons';
 
 tinymce.init({
     selector: '.editor',
