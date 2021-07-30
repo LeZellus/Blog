@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Log;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,6 +15,9 @@ class LogType extends AbstractType
     {
         $builder
             ->add('content', TextareaType::class, [
+                'required' => false,
+            ])
+            ->add('version', NumberType::class, [
                 'required' => false,
             ])
         ;

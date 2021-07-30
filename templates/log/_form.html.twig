@@ -4,6 +4,11 @@
     {{ form_widget(form.content, {'attr': {'class': 'editor mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'}}) }}
 </div>
 
+<div class="grid gap-2">
+    {{ form_label(form.version, "Version", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+    {{ form_widget(form.version, {'attr': {'class': 'mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'}}) }}
+</div>
+
 <div class="flex">
     <button class="btn btn-primary">{{ button_label|default('Créer') }}</button>
     <a class="btn btn-secondary" href="{{ path('log_index') }}">Retour</a>
