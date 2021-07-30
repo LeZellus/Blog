@@ -21,11 +21,13 @@ final class Version20210730085454 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE category ADD icon VARCHAR(255) NOT NULL, ADD chapo VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE log ADD version NUMERIC(4, 1) NOT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE category DROP icon, DROP chapo');
+        $this->addSql('ALTER TABLE log DROP version, DROP version');
     }
 }
