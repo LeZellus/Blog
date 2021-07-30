@@ -39,6 +39,16 @@ class Category
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $icon;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $chapo;
+
     public function __construct()
     {
         $this->article = new ArrayCollection();
@@ -111,6 +121,30 @@ class Category
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(string $icon): self
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    public function getChapo(): ?string
+    {
+        return $this->chapo;
+    }
+
+    public function setChapo(string $chapo): self
+    {
+        $this->chapo = $chapo;
 
         return $this;
     }

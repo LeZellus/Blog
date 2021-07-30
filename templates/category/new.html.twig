@@ -1,11 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Category{% endblock %}
+{% block title %}Créer une catégorie | {{ parent() }}{% endblock %}
 
 {% block body %}
-    <h1>Create new Category</h1>
-
-    {{ include('category/_form.html.twig') }}
-
-    <a href="{{ path('category_index') }}">back to list</a>
+    <section class="pt-32">
+        <div class="max-w-xl mb-10 sm:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+            <div>
+                <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-custom-900 uppercase rounded-full bg-custom-accent-200">
+                    création
+                </p>
+            </div>
+            <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl sm:mx-auto">
+                    <span class="relative inline-block">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             class="absolute -top-1/2 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block"
+                             fill="#d1d5db"
+                             viewBox="0 0 256 256">
+                            <rect width="256" height="256" fill="none"></rect>
+                            <path d="M210.25072,35.878,23.923,88.432a8,8,0,0,0-1.253,14.9295l85.61084,40.5525a8.00008,8.00008,0,0,1,3.80521,3.80521L152.63852,233.33a8,8,0,0,0,14.9295-1.253L220.122,45.74928A8,8,0,0,0,210.25072,35.878Z"
+                                  fill="none" stroke="#d1d5db" stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-width="16"></path>
+                            <line x1="110.86292" y1="145.13708" x2="156.11775"
+                                  y2="99.88225" fill="none" stroke="#d1d5db"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-width="16"></line>
+                        </svg>
+                        <span class="relative">Créer</span>
+                    </span>
+                une catégorie
+            </h2>
+            <p class="text-base text-gray-700 md:text-lg">
+                Créez une nouvelle catégorie pour vos articles
+            </p>
+        </div>
+        {{ include('category/_form.html.twig') }}
+    </section>
 {% endblock %}

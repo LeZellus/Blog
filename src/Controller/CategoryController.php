@@ -45,8 +45,10 @@ class CategoryController extends AbstractController
     #[Route('/{id}', name: 'category_show', methods: ['GET'])]
     public function show(Category $category): Response
     {
+        $articleCategory = $category->getArticle();
         return $this->render('category/show.html.twig', [
             'category' => $category,
+            'articles' => $articleCategory
         ]);
     }
 

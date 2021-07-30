@@ -6,13 +6,20 @@
                 <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">XIPEL</span>
             </a>
             <ul class="flex items-center hidden space-x-8 lg:flex">
-                <li><a href="{{ path('home') }}" aria-label="Our product" title="Accueil"
+                <li>
+                    <a href="{{ path('home') }}" aria-label="Our product" title="Accueil"
                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-custom-400">Accueil</a>
                 </li>
-                <li><a href="{{ path('article_index') }}" aria-label="Our product" title="Articles"
+                <li>
+                    <a href="{{ path('article_index') }}" aria-label="Our product" title="Articles"
                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-custom-400">Articles</a>
                 </li>
-                <li><a href="{{ path('contact') }}" aria-label="Product pricing" title="Contact"
+                <li>
+                    <a href="{{ path('category_index') }}" aria-label="Product pricing" title="Catégories"
+                       class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-custom-400">Catégories</a>
+                </li>
+                <li>
+                    <a href="{{ path('contact') }}" aria-label="Product pricing" title="Contact"
                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-custom-400">Contact</a>
                 </li>
                 <!--

@@ -4,7 +4,7 @@
 
 {% block body %}
     <section class="min-h-screen pt-32">
-        <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+        <div class="max-w-xl mb-10 sm:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
             <div>
                 <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-custom-900 uppercase rounded-full bg-custom-accent-200">
                     Lecture
@@ -46,12 +46,12 @@
                                   stroke="#d1d5db" stroke-linecap="round" stroke-linejoin="round"
                                   stroke-width="16"></line>
                         </svg>
-                        <span class="relative">Tout</span>
+                        <span class="relative">Tous</span>
                     </span>
                 les articles
             </h2>
             <p class="text-base text-gray-700 md:text-lg">
-                Tout les articles et leur catégories
+                Tout les articles et leur catégorie
             </p>
             <a class="btn btn-primary mt-8" href="{{ path('article_new') }}">Ajouter un article</a>
         </div>
@@ -68,7 +68,7 @@
                     <div>
                         <div class="mb-2">
                             <a href="/"
-                               class="text-xs rounded-lg py-0.5 px-2  font-semibold tracking-wide uppercase transition-colors duration-200 {{ article.category.colorText }} {{ article.category.colorBackground }}"
+                               class="text-xs rounded-lg py-0.5 px-2  font-semibold tracking-wide uppercase transition-colors duration-200 text-{{ article.category.colorText }}-700 bg-{{ article.category.colorBackground }}-200"
                                aria-label="Category"
                                title="{{ article.category.name }}">{{ article.category.name ? article.category.name : 'Aucune catégorie' }}</a>
                         </div>
