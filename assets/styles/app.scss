@@ -46,7 +46,7 @@ html {
 }
 
 .flashes {
-  @apply fixed transform -translate-x-1/2 border-2 rounded-lg max-w-lg w-full mx-4 mb-4 transition duration-300 z-40 bottom-0 p-2 justify-between shadow-sm justify-between items-center z-50;
+  @apply fixed transform -translate-x-1/2 border-2 rounded-lg max-w-lg w-64 sm:w-full sm:mx-4 mb-4 transition duration-300 z-40 bottom-0 p-2 justify-between shadow-sm justify-between items-center z-50;
   animation-duration: 1s;
   animation-name: banner-in;
   animation-timing-function: ease-in-out;

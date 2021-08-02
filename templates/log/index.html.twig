@@ -36,8 +36,8 @@
             </p>
         </div>
 
-        {% for log in logs %}
-            <div class="py-16 lg:py-20">
+        <div class="grid gap-8">
+            {% for log in logs %}
                 <div class="flex flex-col items-start md:flex-row">
                     <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-50 mb-4 mr-8">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-custom-400" fill="#02796b"
@@ -51,16 +51,18 @@
                         </svg>
                     </div>
                     <div>
-                        <span class="inline-flex mb-2 text-xs font-semibold tracking-wide text-gray-800 uppercase bg-amber-100 py-0.5 rounded-lg px-2 mb-1">
-                            Version {{ log.version }}
-                        </span>
+                            <span class="inline-flex mb-2 text-xs font-semibold tracking-wide text-gray-800 uppercase bg-amber-100 py-0.5 rounded-lg px-2 mb-1">
+                                Version {{ log.version }}
+                            </span>
                         <h2 class="mb-4 font-sans text-2xl font-bold tracking-tight text-gray-900 sm:leading-none sm:flex">
                             Mise à jour du {{ log.createdAt|date("d.m.Y", "Europe/Paris") }}
                             <div class="flex">
-                                <a class="no-underline ml-2 flex items-center transition duration-300 text-gray-700 hover:text-gray-400" href="{{ path('log_edit', {'id': log.id}) }}">
+                                <a class="no-underline ml-2 flex items-center transition duration-300 text-gray-700 hover:text-gray-400"
+                                   href="{{ path('log_edit', {'id': log.id}) }}">
                                     <i class="ph-pencil"></i>
                                 </a>
-                                <a class="no-underline ml-2 flex items-center transition duration-300 text-red-700 hover:text-red-400" href="{{ path('log_delete', {'id': log.id}) }}">
+                                <a class="no-underline ml-2 flex items-center transition duration-300 text-red-700 hover:text-red-400"
+                                   href="{{ path('log_delete', {'id': log.id}) }}">
                                     <i class="ph-trash"></i>
                                 </a>
                             </div>
@@ -70,9 +72,11 @@
                         </p>
                     </div>
                 </div>
+            {% endfor %}
+            <div>
+                <a class="btn btn-primary" href="{{ path('log_new') }}">Créer un log</a>
             </div>
-        {% endfor %}
+        </div>
 
-        <a class="btn btn-primary" href="{{ path('log_new') }}">Créer un log</a>
     </section>
 {% endblock %}
