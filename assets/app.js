@@ -45,7 +45,7 @@ if (document.querySelector('.copy')) {
 if (document.querySelector('#burgerButton')) {
     let burgerButton = document.querySelector('#burgerButton');
     let closeButton = document.querySelector('#closeButton');
-    let menuMobile = document.querySelector('#mobileMenu')
+    let menuMobile = document.querySelector('#mobileMenu');
 
     burgerButton.addEventListener('click', function () {
         menuMobile.classList.remove('hidden');
@@ -58,5 +58,16 @@ if (document.querySelector('#burgerButton')) {
         burgerButton.classList.remove('hidden');
     })
 }
+
+if (document.querySelector('.notif-close')) {
+    let notifClose = document.querySelector('.notif-close');
+    let flashes = document.querySelector('.flashes');
+
+    notifClose.addEventListener('click', function () {
+        flashes.classList.remove('flex');
+        flashes.classList.add('hidden');
+    })
+}
+
 
 
