@@ -1,41 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Xipel Blog{% endblock %}</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicon_package_v0.16/apple-touch-icon.png') }}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon_package_v0.16/favicon-32x32.png') }}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon_package_v0.16/favicon-16x16.png') }}">
-        <link rel="manifest" href="{{ asset('images/favicon_package_v0.16/site.webmanifest') }}">
-        <link rel="mask-icon" href="{{ asset('images/favicon_package_v0.16/safari-pinned-tab.svg') }}" color="#5bbad5">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="theme-color" content="#ffffff">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        {# Run `composer require symfony/webpack-encore-bundle`
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Xipel Blog{% endblock %}</title>
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="{{ asset('images/favicon_package_v0.16/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="{{ asset('images/favicon_package_v0.16/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="{{ asset('images/favicon_package_v0.16/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('images/favicon_package_v0.16/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('images/favicon_package_v0.16/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-        <script src="https://cdn.tiny.cloud/1/rw78ruup0slekfnq1t5ss54hodg15wxelpobpasmfafy88c3/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPJ7Z0W797"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    <script src="https://cdn.tiny.cloud/1/rw78ruup0slekfnq1t5ss54hodg15wxelpobpasmfafy88c3/tinymce/5/tinymce.min.js"
+            referrerpolicy="origin"></script>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPJ7Z0W797"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-            gtag('config', 'G-MPJ7Z0W797');
-        </script>
-    </head>
-    <body>
-        {{ include('navigation/includes/navbar.html.twig') }}
-        <main class="max-w-7xl mx-auto px-4 md:px-24 lg:px-8">
-            {% block body %}{% endblock %}
-            {{ include('navigation/includes/footer.html.twig') }}
-        </main>
-    </body>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-MPJ7Z0W797');
+    </script>
+</head>
+<body>
+{{ include('navigation/includes/navbar.html.twig') }}
+<main class="max-w-7xl mx-auto px-4 md:px-24 lg:px-8">
+    {% block body %}{% endblock %}
+    {{ include('navigation/includes/footer.html.twig') }}
+</main>
+</body>
+
+<script>
+    window.axeptioSettings = {
+        clientId: "610410f045176202750b793b",
+        cookiesVersion: "xipelgames-base",
+    };
+
+    (function (d, s) {
+        var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+        e.async = true;
+        e.src = "//static.axept.io/sdk.js";
+        t.parentNode.insertBefore(e, t);
+    })(document, "script");
+</script>
 </html>
