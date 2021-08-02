@@ -29,24 +29,28 @@
                 -->
             </ul>
         </div>
-        <!--
-        <ul class="flex items-center hidden space-x-8 lg:flex">
-            <li>
-                <a href="/" aria-label="Sign in" title="Sign in"
-                   class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-custom-400">Sign
-                    in
-                </a>
-            </li>
-            <li>
-                <a href="/"
-                   class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-custom-400 hover:bg-custom-700 focus:shadow-outline focus:outline-none"
-                   aria-label="Sign up"
-                   title="Sign up">
-                    Sign up
-                </a>
-            </li>
-        </ul>
-        -->
+        {% if app.user %}
+            <ul class="flex items-center hidden space-x-8 lg:flex">
+                <a href="#">Profil ici</a>
+            </ul>
+        {% else %}
+            <ul class="flex items-center hidden space-x-8 lg:flex">
+                <li>
+                    <a href="{{ path('app_login') }}" aria-label="Connexion" title="Connexion"
+                       class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-custom-400">Connexion
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('app_register') }}"
+                       class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-custom-400 hover:bg-custom-700 focus:shadow-outline focus:outline-none"
+                       aria-label="Inscription"
+                       title="Inscription">
+                        Inscription
+                    </a>
+                </li>
+            </ul>
+        {% endif %}
+
         <!-- Mobile menu -->
         <div class="lg:hidden">
             <button aria-label="Open Menu" title="Open Menu" id="burgerButton"
