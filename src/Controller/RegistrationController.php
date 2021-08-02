@@ -49,11 +49,11 @@ class RegistrationController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('matheo.zeller@gmail.com', 'Xipel Blog Bot'))
                     ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
+                    ->subject('Veuillez confirmer votre email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
-
+            $this->addFlash('success', 'Inscription réussie !');
             return $this->redirectToRoute('home');
         }
 
@@ -88,7 +88,6 @@ class RegistrationController extends AbstractController
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Votre email a été vérifié.');
-
         return $this->redirectToRoute('home');
     }
 }

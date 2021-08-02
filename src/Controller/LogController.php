@@ -34,6 +34,7 @@ class LogController extends AbstractController
             $entityManager->persist($log);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Log ajouté !');
             return $this->redirectToRoute('log_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -60,6 +61,7 @@ class LogController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'Log modifié !');
             return $this->redirectToRoute('log_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -78,6 +80,7 @@ class LogController extends AbstractController
             $entityManager->flush();
         }
 
+        $this->addFlash('success', 'Log supprimé !');
         return $this->redirectToRoute('log_index', [], Response::HTTP_SEE_OTHER);
     }
 }
