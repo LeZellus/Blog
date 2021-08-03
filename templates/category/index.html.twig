@@ -30,12 +30,15 @@
             <p class="text-base text-gray-700 md:text-lg">
                 Retrouvez les articles en fonction de leur catégorie
             </p>
-            <a class="btn btn-primary mt-8" href="{{ path('category_new') }}">Créer une catégorie</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-primary mt-8" href="{{ path('category_new') }}">Créer une catégorie</a>
+            {% endif %}
         </div>
 
         <div class="grid sm:grid-cols-2 gap-4 lg:grid-cols-4">
             {% for category in categories %}
-                <a href="{{ path('category_show', {'id': category.id}) }}" class="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl">
+                <a href="{{ path('category_show', {'id': category.id}) }}"
+                   class="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl">
                     <div class="p-5">
                         <div class="flex items-center justify-center w-10 h-10 mb-4 rounded-full bg-indigo-50">
                             <i class="text-2xl text-{{ category.colorText }}-400 {{ category.icon }}"></i>

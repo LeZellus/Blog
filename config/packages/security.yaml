@@ -39,12 +39,6 @@ security:
   # Note: Only the *first* access control that matches will be used
   access_control:
     - { path: ^/admin, roles: ROLE_ADMIN }
-    - { path: ^/log/new, roles: ROLE_ADMIN }
-    - { path: ^/log/edit, roles: ROLE_ADMIN }
-    - { path: ^/log/delete, roles: ROLE_ADMIN }
-    - { path: ^/category/new, roles: ROLE_ADMIN }
-    - { path: ^/category/edit, roles: ROLE_ADMIN }
-    - { path: ^/category/delete, roles: ROLE_ADMIN }
-    - { path: ^/article/new, roles: ROLE_ADMIN }
-    - { path: ^/article/edit, roles: ROLE_ADMIN }
-    - { path: ^/article/delete, roles: ROLE_ADMIN }
+    - { path: ^/(article|log|category)/\d/edit, roles: ROLE_ADMIN }
+    - { path: ^/(article|log|category)/new, roles: ROLE_ADMIN }
+    - { path: ^/(article|log|category)/\d, roles: ROLE_ADMIN, methods: [ POST ] }

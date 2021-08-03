@@ -11,7 +11,9 @@
             </div>
             <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl sm:mx-auto">{{ category.name }}</h2>
             <p class="text-base text-gray-700 md:text-lg">{{ category.chapo }}</p>
-            <a class="btn btn-primary mt-8" href="{{ path('category_new') }}">Créer une catégorie</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-primary mt-8" href="{{ path('category_new') }}">Créer une catégorie</a>
+            {% endif %}
         </div>
 
         <div class="grid gap-12 lg:grid-cols-3" id="fourthSection">
@@ -21,7 +23,8 @@
                         <div class="px-2 pb-1 mb-1 border-b border-gray-400">
                             <p class="text-sm text-blue-gray-700">{{ article.createdAt|date("M", "Europe/Paris") }}</p>
                         </div>
-                        <div class="px-2"><p class="text-lg font-bold">{{ article.updatedAt|date("d", "Europe/Paris") }}</p>
+                        <div class="px-2"><p
+                                    class="text-lg font-bold">{{ article.updatedAt|date("d", "Europe/Paris") }}</p>
                         </div>
                     </div>
                     <div>
@@ -38,7 +41,7 @@
                         <p class="mb-5 text-gray-700">{{ article.chapo }}</p>
                         <div class="flex items-center">
                             <a href="/" aria-label="Author" title="Author" class="mr-3">
-                                <img src="{{ asset('images/website/LeZellus-avatar.svg')}}"
+                                <img src="{{ asset('images/website/LeZellus-avatar.svg') }}"
                                      alt="avatar" class="object-cover w-10 h-10 rounded-full shadow-sm"/>
                             </a>
                             <div>

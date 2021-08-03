@@ -54,18 +54,8 @@
                             <span class="inline-flex mb-2 text-xs font-semibold tracking-wide text-gray-800 uppercase bg-amber-100 py-0.5 rounded-lg px-2 mb-1">
                                 Version {{ log.version }}
                             </span>
-                        <h2 class="mb-4 font-sans text-2xl font-bold tracking-tight text-gray-900 sm:leading-none sm:flex">
+                        <h2 class="mb-4 font-sans text-2xl font-bold tracking-tight text-gray-900 sm:leading-none">
                             Mise à jour du {{ log.createdAt|date("d.m.Y", "Europe/Paris") }}
-                            <div class="flex">
-                                <a class="no-underline ml-2 flex items-center transition duration-300 text-gray-700 hover:text-gray-400"
-                                   href="{{ path('log_edit', {'id': log.id}) }}">
-                                    <i class="ph-pencil"></i>
-                                </a>
-                                <a class="no-underline ml-2 flex items-center transition duration-300 text-red-700 hover:text-red-400"
-                                   href="{{ path('log_delete', {'id': log.id}) }}">
-                                    <i class="ph-trash"></i>
-                                </a>
-                            </div>
                         </h2>
                         <p class="text-base text-gray-700 md:text-lg">
                             {{ log.content|raw }}
@@ -73,9 +63,11 @@
                     </div>
                 </div>
             {% endfor %}
-            <div>
-                <a class="btn btn-primary" href="{{ path('log_new') }}">Créer un log</a>
-            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div>
+                    <a class="btn btn-primary" href="{{ path('log_new') }}">Créer un log</a>
+                </div>
+            {% endif %}
         </div>
 
     </section>
