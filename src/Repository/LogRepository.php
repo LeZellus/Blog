@@ -19,6 +19,10 @@ class LogRepository extends ServiceEntityRepository
         parent::__construct($registry, Log::class);
     }
 
+    public function findLastLogs(): array
+    {
+        return $this->findBy([], ['createdAt' => 'DESC']);
+    }
     // /**
     //  * @return Log[] Returns an array of Log objects
     //  */

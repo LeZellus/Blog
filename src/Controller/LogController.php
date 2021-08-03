@@ -17,7 +17,7 @@ class LogController extends AbstractController
     public function index(LogRepository $logRepository): Response
     {
         return $this->render('log/index.html.twig', [
-            'logs' => $logRepository->findAll(),
+            'logs' => $logRepository->findLastLogs(),
         ]);
     }
 
