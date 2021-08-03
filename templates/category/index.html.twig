@@ -33,7 +33,7 @@
             <a class="btn btn-primary mt-8" href="{{ path('category_new') }}">Créer une catégorie</a>
         </div>
 
-        <div class="grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+        <div class="grid sm:grid-cols-2 gap-4 lg:grid-cols-4">
             {% for category in categories %}
                 <a href="{{ path('category_show', {'id': category.id}) }}" class="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl">
                     <div class="p-5">
