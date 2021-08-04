@@ -7,7 +7,7 @@ tinymce.init({
     toolbar_mode: 'floating',
     toolbar: 'image bullist link',
     automatic_uploads: true,
-    images_upload_url: '/attachment/' + form.dataset.articleId,
+    images_upload_url: '/attachment/',
     file_picker_types: 'image',
     file_picker_callback: function (cb, value, meta) {
         var input = document.createElement('input');

@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Attachment;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,6 +31,28 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // On récupère les images transmises
+            $attachments = $form->get('attachment')->getData();
+
+            // On boucle sur les images
+            foreach($attachments as $attachment){
+
+                // On génère un nouveau nom de fichier
+                $fichier = md5(uniqid()).'.'.$attachment->guessExtension();
+
+                // On copie le fichier dans le dossier uploads
+                $attachment->move(
+                    $this->getParameter('upload_directory'),
+                    $fichier
+                );
+
+                // On crée l'image dans la base de données
+                $attachment = new Attachment();
+                $attachment->setName($fichier);
+                $article->addAttachment($attachment);
+            }
+
             $article->setCreatedAt(new \DateTimeImmutable());
             $article->setUpdatedAt(new \DateTimeImmutable());
             $entityManager = $this->getDoctrine()->getManager();
@@ -60,6 +84,27 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les images transmises
+            $attachments = $form->get('attachment')->getData();
+
+            // On boucle sur les images
+            foreach($attachments as $attachment){
+
+                // On génère un nouveau nom de fichier
+                $fichier = md5(uniqid()).'.'.$attachment->guessExtension();
+
+                // On copie le fichier dans le dossier uploads
+                $attachment->move(
+                    $this->getParameter('upload_directory'),
+                    $fichier
+                );
+
+                // On crée l'image dans la base de données
+                $attachment = new Attachment();
+                $attachment->setName($fichier);
+                $article->addAttachment($attachment);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'Article modifié !');
@@ -82,5 +127,30 @@ class ArticleController extends AbstractController
         }
         $this->addFlash('success', 'Article supprimé');
         return $this->redirectToRoute('article_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{id}', name: 'article_delete_attachment', methods: ['DELETE'])]
+    public function deleteAttachment(Request $request, Attachment $attachment): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+
+        // On vérifie si le token est valide
+        if($this->isCsrfTokenValid('delete'.$attachment->getId(), $data['_token'])){
+            // On récupère le nom de l'image
+            $nom = $attachment->getName();
+
+            // On supprime le fichier
+            unlink($this->getParameter('upload_directory').'/'.$nom);
+
+            // On supprime l'entrée de la base
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($attachment);
+            $em->flush();
+
+            // On répond en json
+            return new JsonResponse(['success' => 1]);
+        }else{
+            return new JsonResponse(['error' => 'Token Invalide'], 400);
+        }
     }
 }
