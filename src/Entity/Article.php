@@ -50,7 +50,7 @@ class Article
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity=Attachment::class, mappedBy="article",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Attachment::class, mappedBy="article",cascade={"persist", "remove"})
      */
     private $attachments;
 
