@@ -48,4 +48,9 @@
 
         {{ include('article/_form.html.twig', {'button_label': 'Enregistrer'}) }}
     </section>
+
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('attachments') }}
+    {% endblock %}
 {% endblock %}
