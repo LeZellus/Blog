@@ -11,12 +11,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'phosphor-icons';
 
-tinymce.init({
-    selector: '.editor',
-    plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-    toolbar_mode: 'floating',
-});
-
 AOS.init();
 
 if (document.querySelector('.copy')) {
