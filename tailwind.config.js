@@ -38,6 +38,15 @@ module.exports = {
           'accent-400': '#ffc400',
           'accent-700': '#ffab00',
         },
+        facebook: {
+          DEFAULT: '#3b5998',
+        },
+        twitter: {
+          DEFAULT: '#08a0e9',
+        },
+        discord: {
+          DEFAULT: '#7289da',
+        },
         cyan: {
           50: '#e0f7fa',
           100: '#b2ebf2',
