@@ -4,13 +4,13 @@ namespace App\Form;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\File;
 
 class ArticleType extends AbstractType
 {
@@ -29,7 +29,7 @@ class ArticleType extends AbstractType
             ->add('chapo', TextType::class, [
                 'help'  => '60 caractères maximum'
             ])
-            ->add('content', TextType::class, [
+            ->add('content', CKEditorType::class, [
                 'required' => false,
             ])
             ->add('category', EntityType::class, [
