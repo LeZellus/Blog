@@ -23,6 +23,11 @@ class LogRepository extends ServiceEntityRepository
     {
         return $this->findBy([], ['createdAt' => 'DESC']);
     }
+
+    public function findAllLogs(): array
+    {
+        return $this->findBy([], ['createdAt' => 'DESC']);
+    }
     // /**
     //  * @return Log[] Returns an array of Log objects
     //  */

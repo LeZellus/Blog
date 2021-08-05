@@ -12,7 +12,8 @@
             </div>
             <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl sm:mx-auto">
                     <span class="relative inline-block">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#d1d5db" class="absolute -top-1/2 left-1/2 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block"
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#d1d5db"
+                             class="absolute -top-1/2 left-1/2 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block"
                              viewBox="0 0 256 256">
                             <rect width="256" height="256" fill="none"></rect>
                             <rect x="40" y="40"
@@ -57,14 +58,15 @@
                 <a class="btn btn-primary mt-8" href="{{ path('article_new') }}">Ajouter un article</a>
             {% endif %}
         </div>
-        <div class="grid gap-12 lg:grid-cols-3" id="fourthSection">
+        <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4" id="fourthSection">
             {% for article in articles %}
                 <div class="flex">
                     <div class="pt-1 mr-6 text-center">
                         <div class="px-2 pb-1 mb-1 border-b border-gray-400">
                             <p class="text-sm text-blue-gray-700">{{ article.createdAt|date("M", "Europe/Paris") }}</p>
                         </div>
-                        <div class="px-2"><p class="text-lg font-bold">{{ article.updatedAt|date("d", "Europe/Paris") }}</p>
+                        <div class="px-2"><p
+                                    class="text-lg font-bold">{{ article.updatedAt|date("d", "Europe/Paris") }}</p>
                         </div>
                     </div>
                     <div>
@@ -81,7 +83,7 @@
                         <p class="mb-5 text-gray-700">{{ article.chapo }}</p>
                         <div class="flex items-center">
                             <a href="/" aria-label="Author" title="Author" class="mr-3">
-                                <img src="{{ asset('images/website/LeZellus-avatar.svg')}}"
+                                <img src="{{ asset('images/website/LeZellus-avatar.svg') }}"
                                      alt="avatar" class="object-cover w-10 h-10 rounded-full shadow-sm"/>
                             </a>
                             <div>
@@ -93,6 +95,9 @@
                     </div>
                 </div>
             {% endfor %}
+        </div>
+        <div class="flex justify-center mt-8">
+            {{ knp_pagination_render(articles) }}
         </div>
     </section>
 {% endblock %}

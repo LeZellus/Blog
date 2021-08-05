@@ -22,6 +22,12 @@
                     <a href="{{ path('contact') }}" aria-label="Product pricing" title="Contact"
                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-custom-400">Contact</a>
                 </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a href="{{ path('admin_index') }}" aria-label="Product pricing" title="Contact"
+                           class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-custom-400">Admin</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
         {% if app.user %}
@@ -83,7 +89,7 @@
                 </a>
                 <a href="{{ path('log_index') }}"
                    class="flex flex-col items-center justify-center text-gray-600 uppercase hover:bg-gray-200 py-2 rounded-lg transition duration-300">
-                    <i class="text-4xl text-custom-600 ph-gear"></i>
+                    <i class="text-4xl text-custom-600 ph-clock-clockwise"></i>
                     <span class="text-xs font-semibold">Updates</span>
                 </a>
                 <a href="{{ path('category_index') }}"
@@ -108,6 +114,13 @@
                        class="flex flex-col items-center justify-center text-gray-600 uppercase hover:bg-gray-200 py-2 rounded-lg transition duration-300">
                         <i class="text-4xl text-custom-600 ph-user"></i>
                         <span class="text-xs font-semibold">Profil</span>
+                    </a>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('admin_index') }}"
+                       class="flex flex-col items-center justify-center text-gray-600 uppercase hover:bg-gray-200 py-2 rounded-lg transition duration-300">
+                        <i class="text-4xl text-custom-600 ph-gear"></i>
+                        <span class="text-xs font-semibold">Admin</span>
                     </a>
                 {% endif %}
             </div>

@@ -6,6 +6,8 @@ use App\Entity\Article;
 use App\Entity\Attachment;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use DateTimeImmutable;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,10 +18,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends AbstractController
 {
     #[Route('/', name: 'article_index', methods: ['GET'])]
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(Request $request, ArticleRepository $articleRepository, PaginatorInterface $paginator): Response
     {
+        $donnees = $articleRepository->findAllArticles();
+
+        $articles = $paginator->paginate(
+            $donnees,
+            $request->query->getInt('page', 1),
+            16
+        );
+
         return $this->render('article/index.html.twig', [
-            'articles' => $articleRepository->findLastArticles(),
+            'articles' => $articles,
         ]);
     }
 
@@ -53,8 +63,8 @@ class ArticleController extends AbstractController
                 $article->addAttachment($attachment);
             }
 
-            $article->setCreatedAt(new \DateTimeImmutable());
-            $article->setUpdatedAt(new \DateTimeImmutable());
+            $article->setCreatedAt(new DateTimeImmutable());
+            $article->setUpdatedAt(new DateTimeImmutable());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
             $entityManager->flush();

@@ -11,22 +11,24 @@
             </div>
             <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl sm:mx-auto">
                     <span class="relative inline-block">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             class="absolute -top-1/2 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block"
-                             fill="#d1d5db"
+                        <svg xmlns="http://www.w3.org/2000/svg" class="absolute -top-1/2 left-1/2 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block" fill="#d1d5db"
                              viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect>
-                            <circle cx="128"
-                                    cy="128"
-                                    r="48"
-                                    fill="none"
-                                    stroke="#d1d5db"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="16"></circle>
-                            <path d="M183.66087,65.08649a84.52233,84.52233,0,0,1,7.2522,7.2521l27.32234,3.90156A103.36981,103.36981,0,0,1,228.39912,100.801L211.84465,122.8728s.20824,6.83942.00065,10.2547l16.561,22.07863a103.36931,103.36931,0,0,1-10.18033,24.554l-27.31288,3.90133s-4.689,4.98345-7.25071,7.25163l-3.90155,27.32234A103.36971,103.36971,0,0,1,155.2,228.39912l-22.07039-16.55388a84.521,84.521,0,0,1-10.25609.00006l-22.07863,16.561a103.36914,103.36914,0,0,1-24.554-10.18033l-3.90076-27.31148a84.521,84.521,0,0,1-7.2522-7.25211l-27.32235-3.90155A103.37009,103.37009,0,0,1,27.60186,155.2l16.55447-22.07178s-.20824-6.83942-.00066-10.2547l-16.561-22.07863A103.37,103.37,0,0,1,37.775,76.24087l27.31149-3.90076a84.52233,84.52233,0,0,1,7.2521-7.2522l3.90156-27.32235A103.37019,103.37019,0,0,1,100.801,27.60186l22.0704,16.55388a84.523,84.523,0,0,1,10.25609-.00007l22.07863-16.561a103.37014,103.37014,0,0,1,24.554,10.18033Z"
-                                  fill="none" stroke="#d1d5db" stroke-linecap="round" stroke-linejoin="round"
-                                  stroke-width="16"></path>
-                        </svg>
+                            <line x1="128"
+                                  y1="80"
+                                  x2="128"
+                                  y2="128"
+                                  fill="none"
+                                  stroke="#d1d5db"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="16"></line>
+                            <line x1="169.56922" y1="152" x2="128" y2="128" fill="none" stroke="#d1d5db"
+                                  stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+                            <polyline points="184.167 99.716 224.167 99.716 224.167 59.716" fill="none" stroke="#d1d5db"
+                                      stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+                            <path d="M190.2254,190.2254a88,88,0,1,1,0-124.4508l33.94112,33.94113" fill="none"
+                                  stroke="#d1d5db" stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-width="16"></path></svg>
                         <span class="relative">Mises</span>
                     </span>
                 à jour
@@ -40,15 +42,7 @@
             {% for log in logs %}
                 <div class="flex flex-col items-start md:flex-row">
                     <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-50 mb-4 mr-8">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-custom-400" fill="#02796b"
-                             viewBox="0 0 256 256">
-                            <rect width="256" height="256" fill="none"></rect>
-                            <circle cx="128" cy="128" r="48" fill="none" stroke="#02796b" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="16"></circle>
-                            <path d="M183.66087,65.08649a84.52233,84.52233,0,0,1,7.2522,7.2521l27.32234,3.90156A103.36981,103.36981,0,0,1,228.39912,100.801L211.84465,122.8728s.20824,6.83942.00065,10.2547l16.561,22.07863a103.36931,103.36931,0,0,1-10.18033,24.554l-27.31288,3.90133s-4.689,4.98345-7.25071,7.25163l-3.90155,27.32234A103.36971,103.36971,0,0,1,155.2,228.39912l-22.07039-16.55388a84.521,84.521,0,0,1-10.25609.00006l-22.07863,16.561a103.36914,103.36914,0,0,1-24.554-10.18033l-3.90076-27.31148a84.521,84.521,0,0,1-7.2522-7.25211l-27.32235-3.90155A103.37009,103.37009,0,0,1,27.60186,155.2l16.55447-22.07178s-.20824-6.83942-.00066-10.2547l-16.561-22.07863A103.37,103.37,0,0,1,37.775,76.24087l27.31149-3.90076a84.52233,84.52233,0,0,1,7.2521-7.2522l3.90156-27.32235A103.37019,103.37019,0,0,1,100.801,27.60186l22.0704,16.55388a84.523,84.523,0,0,1,10.25609-.00007l22.07863-16.561a103.37014,103.37014,0,0,1,24.554,10.18033Z"
-                                  fill="none" stroke="#02796b" stroke-linecap="round" stroke-linejoin="round"
-                                  stroke-width="16"></path>
-                        </svg>
+                        <i class="text-custom-400 text-2xl ph-clock-clockwise"></i>
                     </div>
                     <div>
                             <span class="inline-flex mb-2 text-xs font-semibold tracking-wide text-gray-800 uppercase bg-amber-100 py-0.5 rounded-lg px-2 mb-1">

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <section class="min-h-screen pt-32">
+        <h1 class="text-2xl text-gray-800 font-bold sm:text-center mb-8">Admin Panel</h1>
+
+        <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+            <!-- Card -->
+            <a href="{{ path('admin_articles') }}" class="flex items-center p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition duration-300">
+                <div class="p-3 mr-4 text-yellow-500 bg-amber-100 rounded-full flex items-center">
+                    <i class="ph-books text-2xl"></i>
+                </div>
+                <div>
+                    <p class="mb-2 text-sm font-medium text-gray-600">Articles</p>
+                    <p class="text-lg font-semibold text-gray-700">{{ articles|length }}</p>
+                </div>
+            </a>
+
+            <!-- Card -->
+            <a href="{{ path('admin_logs') }}" class="flex items-center p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition duration-300">
+                <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full flex items-center">
+                    <i class="ph-gear-six text-2xl"></i>
+                </div>
+                <div>
+                    <p class="mb-2 text-sm font-medium text-gray-600">Logs</p>
+                    <p class="text-lg font-semibold text-gray-700">{{ logs|length }}</p>
+                </div>
+            </a>
+            <!-- Card -->
+            <a href="{{ path('admin_categories') }}"  class="flex items-center p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition duration-300">
+                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full flex items-center">
+                    <i class="ph-folder text-2xl"></i>
+                </div>
+                <div>
+                    <p class="mb-2 text-sm font-medium text-gray-600">Catégories</p>
+                    <p class="text-lg font-semibold text-gray-700">{{ categories|length }}</p>
+                </div>
+            </a>
+            <!-- Card -->
+            <a href="{{ path('admin_categories') }}" class="flex items-center p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition duration-300">
+                <div class="p-3 mr-4 text-pink-500 bg-pink-100 rounded-full flex items-center">
+                    <i class="ph-user text-2xl"></i>
+                </div>
+                <div>
+                    <p class="mb-2 text-sm font-medium text-gray-600">Utilisateurs</p>
+                    <p class="text-lg font-semibold text-gray-700">{{ users|length }}</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+
+{% endblock %}
