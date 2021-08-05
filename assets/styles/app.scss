@@ -54,6 +54,14 @@ html {
   animation-iteration-count: 1;
 }
 
+.cke_chrome{
+  @apply border border-gray-300 shadow-sm rounded-lg overflow-hidden;
+}
+
+.cke_button_icon {
+  @apply text-red-500;
+}
+
 
 @keyframes banner-in {
   0% {
