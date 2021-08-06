@@ -1,0 +1,32 @@
+{{ form_start(form) }}
+
+<div class="grid gap-2">
+    {{ form_label(form.icon, "Icône de la catégorie") }}
+    {{ form_widget(form.icon) }}
+</div>
+
+<div class="grid gap-2">
+    {{ form_label(form.colorText, "Couleur de la catégorie") }}
+    {{ form_widget(form.colorText) }}
+</div>
+
+<div class="grid gap-2">
+    {{ form_label(form.colorBackground, "Couleur de fond") }}
+    {{ form_widget(form.colorBackground) }}
+</div>
+
+<div class="grid gap-2">
+    {{ form_label(form.name, "Nom de la catégorie") }}
+    {{ form_widget(form.name) }}
+</div>
+
+<div class="grid gap-2">
+    {{ form_label(form.chapo, "Description de la catégorie") }}
+    {{ form_widget(form.chapo) }}
+</div>
+
+<div class="flex">
+    <button class="btn btn-primary">{{ button_label|default('Créer') }}</button>
+    <a class="btn btn-secondary" href="{{ path('admin_categories') }}">Retour</a>
+</div>
+{{ form_end(form) }}

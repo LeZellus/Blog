@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+<div class="grid gap-2">
+    {{ form_label(form.content, "Contenu") }}
+    {{ form_widget(form.content) }}
+</div>
+
+<div class="grid gap-2">
+    {{ form_label(form.version, "Version") }}
+    {{ form_widget(form.version) }}
+</div>
+
+<div class="flex">
+    <button class="btn btn-primary">{{ button_label|default('Créer') }}</button>
+    <a class="btn btn-secondary" href="{{ path('admin_logs') }}">Retour</a>
+</div>
+{{ form_end(form) }}

@@ -1,0 +1,13 @@
+label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+form {
+  @apply grid gap-6 max-w-xl mx-auto;
+}
+
+input[type="text"],
+select,
+textarea{
+  @apply mt-1 focus:ring-custom-500 focus:border-custom-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-lg;
+}
