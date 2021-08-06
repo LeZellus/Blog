@@ -1,0 +1,7 @@
+.tag {
+  @apply uppercase tracking-wider text-xs font-semibold px-2 py-0.5 rounded-lg;
+
+  &-title{
+    @apply inline-flex bg-custom-accent-200 text-custom-600 mb-4;
+  }
+}
