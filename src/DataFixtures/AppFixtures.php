@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
+use App\Entity\Attachment;
 use App\Entity\Category;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -22,6 +23,15 @@ class AppFixtures extends Fixture
             'Dessin' => 'Catégorie dessin',
         ];
 
+        for ($ii = 0; $ii < 20; $ii++) {
+            $attachment = new Attachment();
+            $attachment->setName('photo' . $ii . '.jpg');
+            $manager->persist($attachment);
+            $manager->flush();
+
+            $attachments[] = $attachment;
+        }
+
         foreach ($categoryNames as $categoryName => $desc) {
             $category = new Category();
             $category
@@ -38,9 +48,10 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 20; $i++) {
             $article = new Article();
-            $article->setTitle('Titre ' . $i);
-            $article->setChapo('Description ' . $i);
-            $article->setContent('Contenu ' . $i);
+            $article->setTitle('Un titre plutôt long pour décrire l\'article ' . $i);
+            $article->addAttachment($faker->randomElement($attachments));
+            $article->setChapo('Voici une petite description, elle n\'est pas très grande  ' . $i);
+            $article->setContent('Voici un petit contenu, il n\'est pas très grand mais il fera l\'affaire pour se rendre compte ' . $i);
             $article->setCategory($faker->randomElement($categories));
             $article->setCreatedAt(new \DateTimeImmutable());
             $article->setUpdatedAt(new \DateTimeImmutable());
