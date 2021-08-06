@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Xipel Blog{% endblock %}</title>
+    <title>{% block title %}Xipel, Blog Communautaire{% endblock %}</title>
     <link rel="apple-touch-icon" sizes="180x180"
           href="{{ asset('images/favicon_package_v0.16/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32"
@@ -14,14 +14,14 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Xipel est un blog communautaire autour de la technologie et de l&#x27;art. Retrouvez des articles en fonction de vos envies."/>
     {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 
-    <script src="https://cdn.tiny.cloud/1/rw78ruup0slekfnq1t5ss54hodg15wxelpobpasmfafy88c3/tinymce/5/tinymce.min.js"
-            referrerpolicy="origin"></script>
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
@@ -29,13 +29,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPJ7Z0W797"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
         function gtag() {
             dataLayer.push(arguments);
         }
 
         gtag('js', new Date());
-
         gtag('config', 'G-MPJ7Z0W797');
     </script>
 </head>
