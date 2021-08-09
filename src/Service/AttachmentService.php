@@ -5,17 +5,25 @@ namespace App\Service;
 
 
 use App\Entity\Attachment;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class AttachmentService
+class AttachmentService implements AttachmentServiceInterface
 {
-    public function uploadAttachment($attachment)
+    private $uploadDirectory;
+
+    public function __construct(string $uploadDirectory)
+    {
+        $this->uploadDirectory = $uploadDirectory;
+    }
+
+    public function uploadAttachment(UploadedFile $attachment): Attachment
     {
         // On génère un nouveau nom de fichier
-        $fichier = md5(uniqid()).'.'.$attachment->guessExtension();
+        $fichier = md5(uniqid()) . '.' . $attachment->guessExtension();
 
         // On copie le fichier dans le dossier uploads
         $attachment->move(
-            $this->getParameter('upload_directory'),
+            $this->getTargetDirectory(),
             $fichier
         );
 
@@ -24,5 +32,10 @@ class AttachmentService
         $attachment->setName($fichier);
 
         return $attachment;
+    }
+
+    public function getTargetDirectory()
+    {
+        return $this->uploadDirectory;
     }
 }

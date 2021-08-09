@@ -6,8 +6,8 @@
         <span class="block text-sm font-medium text-gray-700 mb-2">Images</span>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {% for attachment in article.attachments %}
-                <div class="relative rounded-lg overflow-hidden">
-                    <img class="w-full max-h-40 object-cover object-center" src="{{ asset('/uploads/'~attachment.name) }}" alt="">
+                <div class="relative rounded-lg max-h-40 overflow-hidden">
+                    <img class="w-full h-full object-cover object-center" src="{{ asset('/uploads/'~attachment.name) }}" alt="">
 
                     {# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
                     <a class="bg-red-100 absolute right-2 top-2 flex items-center rounded-lg p-2 transition duration-300 hover:bg-red-200 group" href="{{ path('article_delete_attachment', {id: attachment.id}) }}" data-delete
