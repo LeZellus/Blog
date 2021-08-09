@@ -1,0 +1,4 @@
+cat << EOF >> ~/.bashrc
+export PATH="\$PATH:/opt/alt/alt-nodejs10/root/usr/bin/"
+EOF
+source ~/.bashrc

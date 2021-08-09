@@ -6,6 +6,7 @@ use App\Entity\Article;
 use App\Entity\Attachment;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use App\Service\AttachmentService;
 use DateTimeImmutable;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,7 +35,7 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/new', name: 'article_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    public function new(Request $request, AttachmentService $attachmentService): Response
     {
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
@@ -47,20 +48,9 @@ class ArticleController extends AbstractController
 
             // On boucle sur les images
             foreach($attachments as $attachment){
+                $fileUpload = $attachmentService->uploadAttachment($attachment);
 
-                // On génère un nouveau nom de fichier
-                $fichier = md5(uniqid()).'.'.$attachment->guessExtension();
-
-                // On copie le fichier dans le dossier uploads
-                $attachment->move(
-                    $this->getParameter('upload_directory'),
-                    $fichier
-                );
-
-                // On crée l'image dans la base de données
-                $attachment = new Attachment();
-                $attachment->setName($fichier);
-                $article->addAttachment($attachment);
+                $article->addAttachment($fileUpload);
             }
 
             $article->setCreatedAt(new DateTimeImmutable());
