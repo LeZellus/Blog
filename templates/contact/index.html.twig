@@ -32,20 +32,20 @@
         {{ form_start(form) }}
         <div class="grid gap-2">
             {{ form_label(form.firstname, "Prénom") }}
-            {{ form_widget(form.firstname, {'attr': {'class': 'mt-1 focus:ring-custom-500 focus:border-custom-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-lg'}}) }}
+            {{ form_widget(form.firstname) }}
         </div>
         <div class="grid gap-2">
             {{ form_label(form.lastname, "Nom") }}
-            {{ form_widget(form.lastname, {'attr': {'class': 'mt-1 focus:ring-custom-500 focus:border-custom-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-lg'}}) }}
+            {{ form_widget(form.lastname) }}
         </div>
         <div class="grid gap-2">
             {{ form_label(form.email, "Email de contact") }}
-            {{ form_widget(form.email, {'attr': {'class': 'mt-1 focus:ring-custom-500 focus:border-custom-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-lg'}}) }}
-            <small>{{ form_help(form.email, {'help_attr': {'class': 'text-gray-400'}}) }}</small>
+            {{ form_widget(form.email) }}
+            <small>{{ form_help(form.email) }}</small>
         </div>
         <div class="grid gap-2">
             {{ form_label(form.content, "Message") }}
-            {{ form_widget(form.content, {'attr': {'class': 'mt-1 focus:ring-custom-500 focus:border-custom-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-lg h-32'}}) }}
+            {{ form_widget(form.content, {'attr': {'class': 'h-32'}}) }}
         </div>
         <div>
             <button class="btn btn-primary" type="submit">Envoyer</button>

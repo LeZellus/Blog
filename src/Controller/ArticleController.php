@@ -6,6 +6,7 @@ use App\Entity\Article;
 use App\Entity\Attachment;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use App\Service\AttachmentServiceInterface;
 use DateTimeImmutable;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,7 +35,7 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/new', name: 'article_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    public function new(Request $request, AttachmentServiceInterface $attachmentService): Response
     {
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
@@ -47,24 +48,10 @@ class ArticleController extends AbstractController
 
             // On boucle sur les images
             foreach($attachments as $attachment){
-
-                // On génère un nouveau nom de fichier
-                $fichier = md5(uniqid()).'.'.$attachment->guessExtension();
-
-                // On copie le fichier dans le dossier uploads
-                $attachment->move(
-                    $this->getParameter('upload_directory'),
-                    $fichier
-                );
-
-                // On crée l'image dans la base de données
-                $attachment = new Attachment();
-                $attachment->setName($fichier);
-                $article->addAttachment($attachment);
+                $fileUpload = $attachmentService->uploadAttachment($attachment);
+                $article->addAttachment($fileUpload);
             }
 
-            $article->setCreatedAt(new DateTimeImmutable());
-            $article->setUpdatedAt(new DateTimeImmutable());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
             $entityManager->flush();
@@ -88,7 +75,7 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'article_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Article $article): Response
+    public function edit(Request $request, Article $article, AttachmentServiceInterface $attachmentService): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -99,25 +86,13 @@ class ArticleController extends AbstractController
 
             // On boucle sur les images
             foreach($attachments as $attachment){
-
-                // On génère un nouveau nom de fichier
-                $fichier = md5(uniqid()).'.'.$attachment->guessExtension();
-
-                // On copie le fichier dans le dossier uploads
-                $attachment->move(
-                    $this->getParameter('upload_directory'),
-                    $fichier
-                );
-
-                // On crée l'image dans la base de données
-                $attachment = new Attachment();
-                $attachment->setName($fichier);
-                $article->addAttachment($attachment);
+                $fileUpload = $attachmentService->uploadAttachment($attachment);
+                $article->addAttachment($fileUpload);
             }
 
             $this->getDoctrine()->getManager()->flush();
-
             $this->addFlash('success', 'Article modifié !');
+
             return $this->redirectToRoute('article_edit', ['id' => $article->getId()], Response::HTTP_SEE_OTHER);
         }
 
