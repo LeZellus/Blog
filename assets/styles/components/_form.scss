@@ -11,7 +11,7 @@ input[type="email"],
 input[type="password"],
 select,
 textarea{
-  @apply mt-1 focus:ring-custom-500 focus:border-custom-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-lg;
+  @apply mt-1 focus:ring-custom-500 focus:border-custom-500 w-full shadow-sm sm:text-sm border-gray-300 rounded-lg;
 }
 
 small{
