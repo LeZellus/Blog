@@ -46,6 +46,11 @@
     {{ form_widget(form.category) }}
 </div>
 
+<div class="grid gap-2">
+    {{ form_label(form.isPublish, "Publier") }}
+    {{ form_widget(form.isPublish) }}
+</div>
+
 <div class="flex">
     <button class="btn btn-primary">{{ button_label|default('Créer') }}</button>
     <a class="btn btn-secondary" href="{{ path('admin_articles') }}">Retour</a>

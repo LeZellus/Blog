@@ -53,8 +53,7 @@ class AppFixtures extends Fixture
             $article->setChapo('Voici une petite description, elle n\'est pas très grande  ' . $i);
             $article->setContent('Voici un petit contenu, il n\'est pas très grand mais il fera l\'affaire pour se rendre compte ' . $i);
             $article->setCategory($faker->randomElement($categories));
-            $article->setCreatedAt(new \DateTimeImmutable());
-            $article->setUpdatedAt(new \DateTimeImmutable());
+            $article->setIsPublish($faker->numberBetween(0, 1));
             $manager->persist($article);
             $manager->flush();
         }

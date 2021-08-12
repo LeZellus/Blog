@@ -21,12 +21,12 @@ class ArticleRepository extends ServiceEntityRepository
 
     public function findLastArticles(): array
     {
-        return $this->findBy([], ['createdAt' => 'DESC'], 6);
+        return $this->findBy(['isPublish' => 'true'], ['createdAt' => 'DESC'], 6);
     }
 
     public function findAllArticles(): array
     {
-        return $this->findBy([], ['createdAt' => 'DESC']);
+        return $this->findBy(['isPublish' => 'true'], ['createdAt' => 'DESC']);
     }
 
     // /**

@@ -55,6 +55,11 @@ class Article
      */
     private $attachments;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isPublish;
+
     public function __construct()
     {
         $this->attachments = new ArrayCollection();
@@ -170,6 +175,18 @@ class Article
                 $attachment->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsPublish(): ?bool
+    {
+        return $this->isPublish;
+    }
+
+    public function setIsPublish(bool $isPublish): self
+    {
+        $this->isPublish = $isPublish;
 
         return $this;
     }
