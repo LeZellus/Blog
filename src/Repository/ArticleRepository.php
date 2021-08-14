@@ -24,9 +24,14 @@ class ArticleRepository extends ServiceEntityRepository
         return $this->findBy(['isPublish' => 'true'], ['createdAt' => 'DESC'], 6);
     }
 
-    public function findAllArticles(): array
+    public function findAllArticlesIsPublish(): array
     {
         return $this->findBy(['isPublish' => 'true'], ['createdAt' => 'DESC']);
+    }
+
+    public function findAllArticles(): array
+    {
+        return $this->findBy([], ['createdAt' => 'DESC']);
     }
 
     // /**

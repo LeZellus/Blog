@@ -21,7 +21,7 @@ class ArticleController extends AbstractController
     #[Route('/', name: 'article_index', methods: ['GET'])]
     public function index(Request $request, ArticleRepository $articleRepository, PaginatorInterface $paginator): Response
     {
-        $donnees = $articleRepository->findAllArticles();
+        $donnees = $articleRepository->findAllArticlesIsPublish();
 
         $articles = $paginator->paginate(
             $donnees,
