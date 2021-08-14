@@ -39,7 +39,9 @@ class ArticleType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => false,
             ])
-            ->add('isPublish', CheckboxType::class)
+            ->add('isPublish', CheckboxType::class, [
+                'required' => false,
+            ])
         ;
     }
 

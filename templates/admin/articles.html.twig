@@ -17,6 +17,8 @@
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50">
                         <th class="px-4 py-3">ID</th>
                         <th class="px-4 py-3">Titre</th>
+                        <th class="px-4 py-3">Catégorie</th>
+                        <th class="px-4 py-3">Public</th>
                         <th class="px-4 py-3">Actions</th>
                     </tr>
                     </thead>
@@ -32,6 +34,16 @@
                             </td>
                             <td class="px-4 py-3 text-sm whitespace-nowrap">
                                 <span class="text-gray-600">{{ article.title }}</span>
+                            </td>
+                            <td class="px-4 py-3 text-sm whitespace-nowrap">
+                                <span class="text-gray-600">{{ article.category }}</span>
+                            </td>
+                            <td class="px-4 py-3 text-sm whitespace-nowrap">
+                                {% if article.isPublish != false %}
+                                    <span class="text-green-600">Oui</span>
+                                {% else %}
+                                    <span class="text-red-600">Non</span>
+                                {% endif %}
                             </td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm">
