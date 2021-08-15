@@ -2,6 +2,11 @@
 
 {% block title %}Admin Catégories | {{ parent() }}{% endblock %}
 
+{% block head %}
+    {{ parent() }}
+    <meta name="robots" content="noindex,nofollow">
+{% endblock %}
+
 {% block body %}
     <section class="pt-32 grid gap-8">
         <h1 class="text-2xl text-gray-800 font-bold sm:text-center">Admin Catégories</h1>
