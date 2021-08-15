@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\LogRepository;
@@ -71,6 +72,14 @@ class AdminController extends AbstractController
 
         return $this->render('admin/articles.html.twig', [
             'articles' => $articles,
+        ]);
+    }
+
+    #[Route('/article/preview/{id}', name: 'admin_article_preview', methods: 'GET')]
+    public function previewArticle(Article $article): Response
+    {
+        return $this->render('article/show.html.twig', [
+            'article' => $article,
         ]);
     }
 
