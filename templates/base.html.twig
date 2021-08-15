@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Xipel, Blog Communautaire{% endblock %}</title>
-    <link rel="apple-touch-icon" sizes="180x180"
-          href="{{ asset('images/favicon_package_v0.16/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32"
-          href="{{ asset('images/favicon_package_v0.16/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16"
-          href="{{ asset('images/favicon_package_v0.16/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ asset('images/favicon_package_v0.16/site.webmanifest') }}">
-    <link rel="mask-icon" href="{{ asset('images/favicon_package_v0.16/safari-pinned-tab.svg') }}" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-          content="Xipel est un blog communautaire autour de la technologie et de l&#x27;art. Retrouvez des articles en fonction de vos envies."/>
-    {# Run `composer require symfony/webpack-encore-bundle`
+    {% block head %}
+        <meta charset="UTF-8">
+        <title>{% block title %}Xipel, Blog Communautaire{% endblock %}</title>
+        <link rel="apple-touch-icon" sizes="180x180"
+              href="{{ asset('images/favicon_package_v0.16/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32"
+              href="{{ asset('images/favicon_package_v0.16/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16"
+              href="{{ asset('images/favicon_package_v0.16/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('images/favicon_package_v0.16/site.webmanifest') }}">
+        <link rel="mask-icon" href="{{ asset('images/favicon_package_v0.16/safari-pinned-tab.svg') }}" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description"
+              content="Xipel est un blog communautaire autour de la technologie et de l&#x27;art. Retrouvez des articles en fonction de vos envies."/>
+        {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-    {% endblock %}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPJ7Z0W797"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPJ7Z0W797"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
 
-        gtag('js', new Date());
-        gtag('config', 'G-MPJ7Z0W797');
-    </script>
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+            gtag('config', 'G-MPJ7Z0W797');
+        </script>
+    {% endblock %}
 </head>
 <body>
 {{ include('website/flashes.html.twig') }}
