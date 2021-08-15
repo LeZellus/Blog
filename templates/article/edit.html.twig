@@ -2,6 +2,11 @@
 
 {% block title %}Éditer un article | {{ parent() }}{% endblock %}
 
+{% block head %}
+    {{ parent() }}
+    <meta name="robots" content="noindex,nofollow">
+{% endblock %}
+
 {% block body %}
     <section class="pt-32">
         <div class="max-w-xl mb-10 sm:mx-auto sm:text-center lg:max-w-2xl md:mb-12">

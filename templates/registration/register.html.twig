@@ -2,6 +2,11 @@
 
 {% block title %}Inscription | {{ parent() }}{% endblock %}
 
+{% block head %}
+    {{ parent() }}
+    <meta name="robots" content="noindex,nofollow">
+{% endblock %}
+
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
