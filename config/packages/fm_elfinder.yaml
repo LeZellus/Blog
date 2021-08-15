@@ -16,4 +16,4 @@ fm_elfinder:
                         path: uploads/images_ckeditor # Chemin d'upload
                         upload_allow: ['image/png', 'image/jpg', 'image/jpeg'] # Fichiers autorisés
                         upload_deny: ['all'] # Fichiers interdits
-                        upload_max_size: 2M # Taille maximum
+                        upload_max_size: 200000M # Taille maximum
