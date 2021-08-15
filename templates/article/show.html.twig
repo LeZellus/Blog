@@ -2,6 +2,19 @@
 
 {% block title %}{{ article.title }} | {{ parent() }}{% endblock %}
 
+{% block head %}
+    {{ parent() }}
+    <meta property="og:url"
+          content="http://xipelgames.tech/article/{{ article.id }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ article.title }}"/>
+    <meta property="og:description" content="{{ article.chapo }}"/>
+    {% for attachment in article.attachments %}
+    <meta property="og:image"
+          content="{{ app.request.schemeAndHttpHost ~ app.request.baseUrl }}{{ asset('uploads/') ~ attachment.name }}"/>
+    {% endfor %}
+{% endblock %}
+
 {% block body %}
     <section class="max-w-2xl mx-auto text-center pt-32">
         <div class="max-w-xl mb-10 sm:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
