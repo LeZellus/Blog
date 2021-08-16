@@ -65,12 +65,4 @@ DirectoryIndex index.php
     </IfModule>
 </IfModule>
 
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^xipelgames.tech$
-RewriteRule ^(.*) http://www.xipelgames.tech/$1 [QSA,L,R=301]
-
-RewriteEngine On
-RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https://www.xipelgames.tech/$1 [R,L]
-
 Redirect 410 /blog
