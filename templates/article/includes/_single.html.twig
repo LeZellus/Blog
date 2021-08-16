@@ -6,7 +6,7 @@
                aria-label="Catégorie">{{ article.category }}</a>
             <span class="text-gray-600">— {{ article.updatedAt|format_datetime(pattern="dd MMMM YYYY", locale='fr') }}</span>
         </p>
-        <a href="{{ path('article_show', {id: article.id }) }}" aria-label="Article" title="{{ article.title }}"
+        <a href="{{ path('article_show', {slug: article.slug }) }}" aria-label="Article" title="{{ article.title }}"
            class="inline-block mb-3 text-2xl font-bold leading-5 text-black transition-colors duration-200 hover:text-custom-500">{{ article.title }}</a>
         <p class="mb-5 text-gray-700">{{ article.chapo }}</p>
         <div class="flex items-center">
