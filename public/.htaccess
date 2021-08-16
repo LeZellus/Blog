@@ -69,8 +69,8 @@ RewriteEngine on
 RewriteCond %{HTTP_HOST} ^xipelgames.tech$
 RewriteRule ^(.*) http://www.xipelgames.tech/$1 [QSA,L,R=301]
 
-RewriteCond %{SERVER_PORT} ^80$ [OR]
-RewriteCond %{HTTPS} =off
-RewriteRule ^(.*)$ https://www.xipelgames.tech/$1 [R=301,L]
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.xipelgames.tech/$1 [R,L]
 
 Redirect 410 /blog
