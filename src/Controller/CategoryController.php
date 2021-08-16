@@ -43,7 +43,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'category_show', methods: ['GET'])]
+    #[Route('/{slug}', name: 'category_show', methods: ['GET'])]
     public function show(Category $category): Response
     {
         $articlesCategory = $category->getArticle();
