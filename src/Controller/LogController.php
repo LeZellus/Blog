@@ -33,6 +33,7 @@ class LogController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($log);
             $entityManager->flush();
+            
 
             $this->addFlash('success', 'Log ajouté !');
             return $this->redirectToRoute('log_index', [], Response::HTTP_SEE_OTHER);
