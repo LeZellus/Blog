@@ -2,6 +2,18 @@
 
 {% block title %}Accueil | {{ parent() }}{% endblock %}
 
+{% block head %}
+    {{ parent() }}
+    <meta property="og:url"
+          content="http://xipelgames.tech/"/>
+    <meta property="og:type" content="siteweb"/>
+    <meta property="og:title" content="Xipel Blog | Site communautaire."/>
+    <meta property="og:description"
+          content="Xipel est un blog communautaire autour de la technologie et de l&#x27;art. Retrouvez des articles en fonction de vos envies."/>
+    <meta property="og:image"
+          content="{{ app.request.schemeAndHttpHost ~ app.request.baseUrl }}{{ asset('images/website/logo.svg') }}"/>
+{% endblock %}
+
 {% block body %}
     {{ include('home/includes/_hero.html.twig') }}
     {{ include('home/includes/_steps.html.twig') }}

@@ -16,9 +16,9 @@
         <div class="max-w-xl mb-10 sm:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
             <img src="{{ asset('images/website/logo.svg') }}" alt="Logo website" class="mb-4 h-28 mx-auto">
             <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl sm:mx-auto">
-                    <span class="relative inline-block">
-                        <span class="relative">Inscription</span>
-                    </span>
+                <span class="relative inline-block">
+                    <span class="relative">Inscription</span>
+                </span>
             </h2>
         </div>
 
@@ -26,12 +26,12 @@
         <div class="grid gap-2">
             {{ form_label(registrationForm.email, "Email") }}
             {{ form_widget(registrationForm.email) }}
-            <small>{{ form_help(registrationForm.email) }}</small>
+            {{ form_help(registrationForm.email) }}
         </div>
         <div class="grid gap-2">
             {{ form_label(registrationForm.plainPassword, "Mot de passe") }}
             {{ form_widget(registrationForm.plainPassword) }}
-            <small>{{ form_help(registrationForm.plainPassword) }}</small>
+            {{ form_help(registrationForm.plainPassword) }}
         </div>
         <div class="grid gap-2">
             <div>
