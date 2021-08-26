@@ -2,7 +2,7 @@
     <div class="p-8 bg-white border rounded shadow-sm hover:shadow-lg transition duration-300">
         <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
             <a href="{{ path('category_show', {slug: article.category.name } ) }}"
-               class="tag text-{{ article.category.colorText }}-600 bg-{{ article.category.colorBackground }}-100"
+               class="tag {{ article.category.colorText }} {{ article.category.colorBackground }}"
                aria-label="Catégorie">{{ article.category }}</a>
             <span class="text-gray-600">— {{ article.updatedAt|format_datetime(pattern="dd MMMM YYYY", locale='fr') }}</span>
         </p>
