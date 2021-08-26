@@ -1,9 +1,20 @@
 module.exports = {
-  purge: [
-    './templates/**/*.html.twig',
-    './assets/**/*.css',
-    './assets/**/*.js',
-  ],
+  purge: {
+    content: [
+      './templates/**/*.html.twig',
+      './assets/**/*.css',
+      './assets/**/*.js',
+    ],
+    safelist: [
+        //categories
+      'text-pink-500',
+      'text-yellow-500',
+      'text-green-500',
+      'bg-pink-100',
+      'bg-yellow-100',
+      'bg-green-100',
+    ],
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -50,22 +61,6 @@ module.exports = {
         },
         discord: {
           DEFAULT: '#7289da',
-        },
-        cyan: {
-          50: '#e0f7fa',
-          100: '#b2ebf2',
-          200: '#80deea',
-          300: '#4dd0e1',
-          400: '#26c6da',
-          500: '#00bcd4',
-          600: '#00acc1',
-          700: '#0097a7',
-          800: '#00838f',
-          900: '#006064',
-          'accent-100': '#84ffff',
-          'accent-200': '#18ffff',
-          'accent-400': '#00e5ff',
-          'accent-700': '#00b8d4',
         },
       },
       spacing: {
