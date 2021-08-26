@@ -40,13 +40,13 @@
                 <a href="{{ path('category_show', {'slug': category.slug}) }}"
                    class="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded-lg border border-gray-200 group hover:shadow-lg">
                     <div class="p-5">
-                        <div class="flex items-center justify-center w-10 h-10 mb-4 rounded-full bg-indigo-50">
-                            <i class="text-2xl text-{{ category.colorText }}-400 {{ category.icon }}"></i>
+                        <div class="flex items-center justify-center w-10 h-10 mb-4 rounded-full {{ category.colorBackground }}">
+                            <i class="text-2xl {{ category.colorText }} {{ category.icon }}"></i>
                         </div>
                         <p class="mb-2 font-bold">{{ category.name }}</p>
                         <p class="text-sm leading-5 text-gray-900">{{ category.chapo }}</p>
                     </div>
-                    <div class="w-full h-0.5 ml-auto duration-300 origin-left transform scale-x-0 bg-{{ category.colorBackground }}-400 group-hover:scale-x-100"></div>
+                    <div class="w-full h-2 ml-auto duration-300 origin-left transform scale-x-0 {{ category.colorBackground }} group-hover:scale-x-100"></div>
                 </a>
             {% endfor %}
         </div>
