@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer profil | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <section class="max-w-7xl space-y-8">
+        <h1 class="p-6 text-center text-3xl font-extrabold text-gray-900">Éditer profil</h1>
+        <div class="bg-white border border-gray-300 overflow-hidden rounded-lg">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-lg leading-6 font-medium text-gray-900">Informations générales</h2>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Données publiques</p>
+            </div>
+            {{ include('profil/includes/_form_user_info.html.twig') }}
+        </div>
+
+        <div class="bg-white border border-gray-300 overflow-hidden rounded-lg">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-lg leading-6 font-medium text-gray-900 flex items-center">Adresse <span class="tag bg-pink-100 text-pink-500 ml-2 uppercase">Bientôt !</span></h2>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Votre adresse d'habitation</p>
+            </div>
+            {# include('profil/includes/_form_user_address.html.twig') #}
+        </div>
+
+        <div class="bg-white border border-gray-300 overflow-hidden rounded-lg">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-lg leading-6 font-medium text-gray-900 flex items-center">Photo de profil <span class="tag bg-pink-100 text-pink-500 ml-2 uppercase">Bientôt !</span></h2>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Modifiez la façon dont les autres vous voient</p>
+            </div>
+            {# include('profil/includes/_form_user_thumb.html.twig') #}
+        </div>
+
+        <div class="bg-white border border-gray-300 overflow-hidden rounded-lg">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-lg leading-6 font-medium text-gray-900">Suppression de compte</h2>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Section dangereuse, prenez-garde</p>
+            </div>
+            <div class="bg-gray-50 px-4 py-5 sm:px-6">
+                <a href="{{ path('profil_remove') }}"
+                   class="btn btn-delete">Supprimer mon compte</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

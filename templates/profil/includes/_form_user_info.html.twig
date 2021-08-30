@@ -1,0 +1,21 @@
+{{ form_start(formUpdateUser, {'attr': {'class': 'w-full'}}) }}
+<div class="bg-gray-50 p-4 sm:grid sm:grid-cols-2 items-center sm:gap-4">
+    {{ form_label(formUpdateUser.lastname) }}
+    {{ form_widget(formUpdateUser.lastname) }}
+</div>
+
+<div class="bg-white p-4 sm:grid sm:grid-cols-2 items-center sm:gap-4">
+    {{ form_label(formUpdateUser.firstname) }}
+    {{ form_widget(formUpdateUser.firstname) }}
+</div>
+
+<div class="bg-gray-50 p-4 sm:grid sm:grid-cols-2 items-center sm:gap-4">
+    {{ form_label(formUpdateUser.pseudonyme) }}
+    {{ form_widget(formUpdateUser.pseudonyme) }}
+</div>
+
+<div class="flex justify-end p-4">
+    {{ form_row(formUpdateUser.submit, { 'label': 'Enregistrer', 'class': 'btn btn-primary'}) }}
+</div>
+
+{{ form_end(formUpdateUser) }}
