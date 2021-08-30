@@ -23,10 +23,14 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('scroll') }}
         {% endblock %}
     {% endblock %}
 </head>
 <body>
+<div class="progress-container w-full h-2 bg-transparent fixed bottom-0 left-0">
+    <div class="progress-bar w-0 bg-custom-400 h-2 transition duration-300" id="myBar"></div>
+</div>
 {{ include('website/flashes.html.twig') }}
 {{ include('navigation/navbar.html.twig') }}
 <main class="max-w-7xl mx-auto px-4 md:px-24 lg:px-8">
