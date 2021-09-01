@@ -9,6 +9,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity(repositoryClass=AttachmentRepository::class)
  * @Vich\Uploadable()
+ * @ORM\HasLifecycleCallbacks()
  */
 class Attachment
 {
@@ -93,37 +94,34 @@ class Attachment
         $this->imageFile = $imageFile;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getUpdatedAt(): mixed
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
-        $this->updatedAt = new \DateTimeImmutable();
-        return $this;
+        return $this->createdAt;
     }
 
     /**
-     * @param mixed $updatedAt
+     * @return $this
+     * @ORM\PrePersist
      */
-    public function setUpdatedAt(mixed $updatedAt): void
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCreatedAt(): mixed
+    public function setCreatedAt(): self
     {
         $this->createdAt = new \DateTimeImmutable();
         return $this;
     }
 
-    /**
-     * @param mixed $createdAt
-     */
-    public function setCreatedAt(mixed $createdAt): void
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
-        $this->createdAt = $createdAt;
+        return $this->updatedAt;
+    }
+
+    /**
+     * @return $this
+     * @ORM\PrePersist
+     */
+    public function setUpdatedAt(): self
+    {
+        $this->updatedAt = new \DateTimeImmutable();
+
+        return $this;
     }
 }
