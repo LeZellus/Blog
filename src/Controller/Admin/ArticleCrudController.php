@@ -8,8 +8,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class ArticleCrudController extends AbstractCrudController
 {
@@ -23,7 +24,7 @@ class ArticleCrudController extends AbstractCrudController
         return [
             TextField::new('title', 'Titre'),
             TextField::new('chapo', 'Description'),
-            TextEditorField::new('content', 'Contenu'),
+            TextareaField::new('content', 'Contenu')->setFormType(CKEditorType::class),
             BooleanField::new('isPublish', 'Public'),
             AssociationField::new('category', 'Catégorie'),
             DateTimeField::new('createdAt', 'Date Création')->hideOnForm(),
@@ -35,6 +36,7 @@ class ArticleCrudController extends AbstractCrudController
     {
         return $crud
             ->setDefaultSort(['createdAt' => 'DESC'])
+            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig')
         ;
     }
 }
