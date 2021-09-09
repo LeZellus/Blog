@@ -30,9 +30,6 @@
             <p class="text-base text-gray-700 md:text-lg">
                 Retrouvez les articles en fonction de leur catégorie
             </p>
-            {% if is_granted('ROLE_ADMIN') %}
-                <a class="btn btn-primary mt-8" href="{{ path('category_new') }}">Créer une catégorie</a>
-            {% endif %}
         </div>
 
         <div class="grid sm:grid-cols-2 gap-4 lg:grid-cols-4">

@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Article;
 use App\Entity\Attachment;
 use App\Entity\Category;
+use App\Entity\Log;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -55,8 +56,16 @@ class AppFixtures extends Fixture
             $article->setCategory($faker->randomElement($categories));
             $article->setIsPublish($faker->numberBetween(0, 1));
             $manager->persist($article);
-            $manager->flush();
         }
+        $manager->flush();
+
+        for ($i = 0; $i < 20; $i++) {
+            $log = new Log();
+            $log->setContent('Voici un log, le numéro ' . $i);
+            $log->setVersion($i);
+            $manager->persist($log);
+        }
+        $manager->flush();
 
         $user = new User();
         $user

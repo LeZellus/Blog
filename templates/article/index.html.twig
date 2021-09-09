@@ -54,9 +54,6 @@
             <p class="text-base text-gray-700 md:text-lg">
                 Tout les articles et leur catégorie
             </p>
-            {% if is_granted('ROLE_ADMIN') %}
-                <a class="btn btn-primary mt-8" href="{{ path('article_new') }}">Ajouter un article</a>
-            {% endif %}
         </div>
 
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
