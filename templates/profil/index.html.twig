@@ -5,12 +5,26 @@
 {% block body %}
     <section>
         <div class="relative">
-            <div class="h-96 bg-bottom bg-cover rounded-lg"
+            <div class="h-96 bg-bottom bg-cover rounded-lg relative"
                  style="background-image: url('{{ asset('images/website/profil_cover_default3.jpg') }}')"></div>
-            <div class="transform bg-cover bg-center -translate-x-1/2 left-1/2 absolute top-72 rounded-full border-2 border-custom-400 w-48 h-48"
-                 style="background-image: url('https://i.pinimg.com/originals/2c/5a/57/2c5a57f4562aff17b9c2142b4b1453e1.gif')">
-                <div class="h-full w-full bg-gray-600 bg-opacity-80 rounded-full flex items-center justify-center">
-                    <span class="tag bg-pink-100 text-pink-500 uppercase">Bientôt !</span>
+
+            <div class="transform -translate-x-1/2 left-1/2 absolute top-72 rounded-full border-2 border-custom-400 w-48 h-48 bg-white overflow-hidden group">
+                <div class="relative h-full w-full">
+                    {% if app.user.profilThumb != null %}
+                        <img src="{{ vich_uploader_asset(app.user.profilThumb, 'imageFile') | imagine_filter('article') }}"
+                             alt="Photo de profil de {{ app.user.firstname }} {{ app.user.lastname }}"
+                             class="object-cover h-full m-auto"
+                        >
+                    {% else %}
+                        <img src="{{ asset('images/website/logo.png') }}"
+                             alt="Photo de profil de {{ app.user.firstname }} {{ app.user.lastname }}"
+                             class="object-cover h-full m-auto"
+                        >
+                    {% endif %}
+                    <a href="{{ path('profil_edit') }}"
+                       class="flex h-full w-full absolute top-0 left-0 items-center justify-center bg-gray-800 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="bg-white rounded-lg p-2 text-sm text-custom-400">Modifier</span>
+                    </a>
                 </div>
             </div>
         </div>

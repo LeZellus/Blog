@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="`user`")
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serializable
 {
     /**
      * @ORM\Id
@@ -57,6 +57,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $pseudonyme;
+
+    /**
+     * @ORM\OneToOne(targetEntity=ProfilThumb::class, inversedBy="user", cascade={"persist", "remove"})
+     */
+    private $profilThumb;
 
     public function getId(): ?int
     {
@@ -193,5 +198,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->pseudonyme = $pseudonyme;
 
         return $this;
+    }
+
+    public function getProfilThumb(): ?ProfilThumb
+    {
+        return $this->profilThumb;
+    }
+
+    public function setProfilThumb(?ProfilThumb $profilThumb): self
+    {
+        $this->profilThumb = $profilThumb;
+
+        return $this;
+    }
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->email,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+            ) = unserialize($serialized);
     }
 }

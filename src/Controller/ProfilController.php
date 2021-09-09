@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\UserInfoType;
+use App\Form\UserProfilThumbType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,8 +25,19 @@ class ProfilController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
+        $formProfilUserThumb = $this->createForm(UserProfilThumbType::class, $user);
+        $formProfilUserThumb->handleRequest($request);
+
         $formUpdateUser = $this->createForm(UserInfoType::class, $user);
         $formUpdateUser->handleRequest($request);
+
+        if ($formProfilUserThumb->isSubmitted() && $formProfilUserThumb->isValid()) {
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash('success', 'Votre profil à été modifié !');
+            return $this->redirectToRoute('profil_index');
+        }
 
         if ($formUpdateUser->isSubmitted() && $formUpdateUser->isValid()) {
             $em->persist($user);
@@ -37,6 +49,7 @@ class ProfilController extends AbstractController
 
         return $this->render('profil/edit.html.twig', array(
             'formUpdateUser' => $formUpdateUser->createView(),
+            'formProfilUserThumb' => $formProfilUserThumb->createView(),
         ));
     }
 
