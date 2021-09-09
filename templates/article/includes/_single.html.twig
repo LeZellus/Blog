@@ -10,13 +10,18 @@
            class="inline-block mb-3 text-2xl font-bold leading-5 text-black transition-colors duration-200 hover:text-custom-500">{{ article.title }}</a>
         <p class="mb-5 text-gray-700">{{ article.chapo }}</p>
         <div class="flex items-center">
-            <a href="/" aria-label="Author" title="Author" class="mr-3">
-                <img src="{{ asset('images/website/LeZellus-avatar.svg') }}"
-                     alt="avatar" class="object-cover w-10 h-10 rounded-full shadow-sm"/>
-            </a>
+            <div aria-label="Author" title="Author" class="mr-3 w-10 h-10 rounded-full border border-gray-300">
+                {% if app.user.profilThumb != null %}
+                    <img src="{{ vich_uploader_asset(app.user.profilThumb, 'imageFile') | imagine_filter('article') }}"
+                         alt="avatar" class="object-cover h-full w-full"/>
+                {% else %}
+                    <img src="{{ asset('images/website/logo.png') }}"
+                         alt="avatar" class="object-cover h-full w-full"/>
+                {% endif %}
+            </div>
             <div>
-                <a href="/" aria-label="Author" title="Author"
-                   class="font-semibold text-gray-800 transition-colors duration-200 hover:text-custom-accent-400">LeZellus</a>
+                <div aria-label="Author" title="Author"
+                   class="font-semibold text-gray-800 transition-colors duration-200 hover:text-custom-accent-400">LeZellus</div>
                 <p class="text-sm font-medium leading-4 text-gray-600">Administrateur</p>
             </div>
         </div>

@@ -86,6 +86,7 @@ module.exports = {
     textColor: ['responsive', 'hover', 'focus', 'group-hover'],
     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
     backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    display: ['responsive', 'hover', 'focus', 'group-hover'],
     translate: ({after}) => after(['group-hover']),
   },
   plugins: [

@@ -22,9 +22,15 @@
         </div>
         {% if app.user %}
             <div class="flex items-center hidden space-x-8 lg:flex">
-                <a href="{{ path('profil_index') }}" class="h-10 w-10 border-2 border-custom-500 rounded-full overflow-hidden">
-                    <img src="{{ asset('images/website/LeZellus-avatar.svg') }}" alt="Photo profil de {{ app.user.firstname }} {{ app.user.lastname }}">
-                </a>
+                {% if app.user.profilThumb != null %}
+                    <a href="{{ path('profil_index') }}" class="h-10 w-10 border-2 border-custom-500 rounded-full overflow-hidden">
+                        <img src="{{ vich_uploader_asset(app.user.profilThumb, 'imageFile') | imagine_filter('article') }}" alt="Photo profil de {{ app.user.firstname }} {{ app.user.lastname }}">
+                    </a>
+                {% else %}
+                    <a href="{{ path('profil_index') }}" class="h-10 w-10 border-2 border-custom-500 rounded-full overflow-hidden">
+                        <img src="{{ asset('images/website/logo.png') }}" alt="Photo profil de {{ app.user.firstname }} {{ app.user.lastname }}" class="h-full w-full object-cover">
+                    </a>
+                {% endif %}
                 <a href="{{ path('app_logout') }}" class="flex items-center">
                     <i class="text-2xl ph-sign-out text-gray-700"></i>
                 </a>

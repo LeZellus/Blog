@@ -38,4 +38,5 @@ public/.DS_Store
 ###> vich-uploader ###
 /public/images/attachments/*
 !/public/images/attachments/toutou.jpg
+/public/images/thumbProfil/*
 ###< vich-uploader ###
