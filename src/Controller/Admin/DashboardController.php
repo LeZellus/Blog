@@ -4,7 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Entity\Log;
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
@@ -24,14 +26,13 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Xipel Blog')
+            ->setTitle('Xipel Admin')
             ->setFaviconPath('images/favicon_package_v0.16/favicon-32x32.png')
         ;
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoDashboard('Accueil Admin', 'fa fa-home');
         yield MenuItem::linkToRoute('Accueil Xipel', 'fa fa-home', 'home');
 
         yield MenuItem::section('Articles');
@@ -44,6 +45,10 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Utilisateurs');
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class);
+
+        yield MenuItem::section('Updates');
+        yield MenuItem::linkToCrud('Logs', 'fa fa-gear', Log::class);
+        yield MenuItem::linkToCrud('Créer log', 'fa fa-pen', Log::class)->setAction('new');
     }
 
     public function configureUserMenu(UserInterface $user): UserMenu
@@ -68,5 +73,10 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::linkToRoute('Profil', 'fa fa-id-card', 'profil_index'),
                 MenuItem::linkToRoute('Paramètres', 'fa fa-user-cog', 'profil_edit'),
             ]);
+    }
+
+    public function configureAssets(): Assets
+    {
+        return Assets::new()->addCssFile('build/admin.css');
     }
 }

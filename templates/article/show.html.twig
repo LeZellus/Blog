@@ -24,7 +24,7 @@
             <p class="text-base text-gray-700 md:text-lg">{{ article.chapo }}</p>
         </div>
         {% for attachment in article.attachments %}
-            <img class="object-cover w-full h-56 rounded-lg shadow-lg sm:h-64 md:h-80 lg:h-96" src="{{ asset('images/attachments/') | imagine_filter('miniature') ~ attachment.image }}" alt="Photo">
+            <img class="object-cover w-full h-56 rounded-lg shadow-lg sm:h-64 md:h-80 lg:h-96" src="{{ vich_uploader_asset(attachment, 'imageFile') | imagine_filter('article') }}" alt="Photo">
         {% endfor %}
         <div class="text-left pt-10 lg:pt-12 article-content">{{ article.content | raw }}</div>
 

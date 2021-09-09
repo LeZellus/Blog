@@ -28,7 +28,7 @@ class Attachment
     /**
      * @Vich\UploadableField(mapping="attachments", fileNameProperty="image")
      */
-    private mixed $imageFile;
+    private $imageFile;
 
     /**
      * @ORM\Column(type="datetime")

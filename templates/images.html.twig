@@ -1,1 +1,3 @@
-{{ dump(field.value.count) }}
+{% for image in field.value %}
+    <img src="{{ asset('images/attachments/') | imagine_filter('miniature') ~ image.image }}" alt="">
+{% endfor %}

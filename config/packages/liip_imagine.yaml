@@ -12,10 +12,10 @@ liip_imagine:
     filter_sets:
         cache: ~
         miniature:
-            quality: 100
+            quality: 60
             filters:
                 thumbnail:
-                    size: [1000, 571]
+                    size: [100, 100]
                     mode: outbound
         article:
             quality: 100
