@@ -15,7 +15,7 @@
                 <a href="{{ path('contact') }}" aria-label="Product pricing" title="Contact"
                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-custom-400">Contact</a>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('admin_index') }}" aria-label="Product pricing" title="Contact"
+                    <a href="{{ path('admin') }}" aria-label="Product pricing" title="Contact"
                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-custom-400">Admin</a>
                 {% endif %}
             </div>
@@ -103,7 +103,7 @@
                     </a>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('admin_index') }}"
+                    <a href="{{ path('admin') }}"
                        class="flex flex-col items-center justify-center text-gray-600 uppercase hover:bg-gray-200 py-2 rounded-lg transition duration-300">
                         <i class="text-4xl text-custom-600 ph-gear"></i>
                         <span class="text-xs font-semibold">Admin</span>

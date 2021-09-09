@@ -34,3 +34,8 @@ public/.DS_Store
 ###> liip/imagine-bundle ###
 /public/media/cache/
 ###< liip/imagine-bundle ###
+
+###> vich-uploader ###
+/public/images/attachments/*
+!/public/images/attachments/toutou.jpg
+###< vich-uploader ###

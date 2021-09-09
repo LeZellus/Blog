@@ -25,26 +25,26 @@ class AppFixtures extends Fixture
 
         for ($ii = 0; $ii < 20; $ii++) {
             $attachment = new Attachment();
-            $attachment->setName('photo' . $ii . '.jpg');
+            $attachment->setImage('toutou.jpg');
             $manager->persist($attachment);
-            $manager->flush();
 
             $attachments[] = $attachment;
         }
+        $manager->flush();
 
         foreach ($categoryNames as $categoryName => $desc) {
             $category = new Category();
             $category
                 ->setName($categoryName)
                 ->setChapo($desc)
-                ->setColorBackground('green')
-                ->setColorText('green')
+                ->setColorBackground('bg-green-200')
+                ->setColorText('text-green-600')
                 ->setIcon('ph-folder');
             $manager->persist($category);
-            $manager->flush();
 
             $categories[] = $category;
         }
+        $manager->flush();
 
         for ($i = 0; $i < 20; $i++) {
             $article = new Article();
