@@ -11,9 +11,6 @@
             </div>
             <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl sm:mx-auto">{{ category.name }}</h2>
             <p class="text-base text-gray-700 md:text-lg">{{ category.chapo }}</p>
-            {% if is_granted('ROLE_ADMIN') %}
-                <a class="btn btn-primary mt-8" href="{{ path('category_new') }}">Créer une catégorie</a>
-            {% endif %}
         </div>
 
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="fourthSection">

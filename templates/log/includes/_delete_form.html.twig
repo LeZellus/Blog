@@ -1,4 +1,0 @@
-<form method="post" action="{{ path('log_delete', {'id': log.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce log ?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ log.id) }}">
-    <button class="flex items-center"><i class="ph-trash text-red-500 text-xl"></i></button>
-</form>
