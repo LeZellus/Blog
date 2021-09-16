@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Entity\Comment;
 use App\Entity\Log;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
@@ -45,6 +46,9 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Utilisateurs');
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class);
+
+        yield MenuItem::section('Commentaires');
+        yield MenuItem::linkToCrud('Commentaires', 'fa fa-comment', Comment::class);
 
         yield MenuItem::section('Updates');
         yield MenuItem::linkToCrud('Logs', 'fa fa-gear', Log::class);

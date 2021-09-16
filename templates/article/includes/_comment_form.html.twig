@@ -1,0 +1,46 @@
+<section class="grid gap-8 mt-8">
+    <div class="border-b border-gray-300 flex justify-between pb-2">
+        <span>{{ article.comments|length }} commentaires</span>
+        <a href="#comment" class="text-custom-400 font-semibold underline">Commenter</a>
+    </div>
+
+    <div class="inline-grid gap-4">
+        {% for comment in comments %}
+            <span class="p-4 rounded-lg border border-gray-300 text-left grid gap-2">
+                <p>{{ comment.content }}</p>
+                <div class="text-xs text-gray-400">
+                    Le {{ comment.createdAt|format_datetime(pattern="dd MMMM YYYY", locale='fr') }}
+                    par
+                    {% if comment.user.pseudonyme != null %}
+                        {{ comment.user.pseudonyme }}
+                    {% else %}
+                        Anonymme
+                    {% endif %}
+                    </p>
+                </div>
+            </span>
+        {% endfor %}
+    </div>
+
+    {% if app.user %}
+        {{ form_start(form, {'attr': {'class': 'w-full grid gap-4'}}) }}
+        <div class="grid gap-2" id="comment">
+            {{ form_label(form.content, 'Commentaire', { 'label_attr': {'class': 'text-left'} }) }}
+            {{ form_widget(form.content, {'attr': {'class': 'h-32 text-left'}}) }}
+        </div>
+
+        <div>
+            {{ form_row(form.submit, { 'label': 'Enregistrer'}) }}
+        </div>
+        {{ form_end(form) }}
+    {% else %}
+        <div class="grid gap-4">
+            <p>Vous devez vous inscrire ou vous connecter pour poster un commentaire.</p>
+            <div>
+                <a class="btn btn-primary" href="{{ path('app_register') }}">Inscription</a>
+                <a class="btn btn-secondary" href="{{ path('app_login') }}">Connexion</a>
+            </div>
+        </div>
+    {% endif %}
+</section>
+
