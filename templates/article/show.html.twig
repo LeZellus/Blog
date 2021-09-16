@@ -11,8 +11,8 @@
     <meta property="og:description" content="{{ article.chapo }}"/>
     {% for attachment in article.attachments %}
 
-{#    <meta property="og:image"#}
-{#          content="{{ app.request.schemeAndHttpHost ~ app.request.baseUrl }}{{ asset('uploads/') ~ attachment.name }}"/>#}
+        {# <meta property="og:image" #}
+        {# content="{{ app.request.schemeAndHttpHost ~ app.request.baseUrl }}{{ asset('uploads/') ~ attachment.name }}"/> #}
     {% endfor %}
 {% endblock %}
 
@@ -24,12 +24,12 @@
             <p class="text-base text-gray-700 md:text-lg">{{ article.chapo }}</p>
         </div>
         {% for attachment in article.attachments %}
-            <img class="object-cover w-full h-56 rounded-lg shadow-lg sm:h-64 md:h-80 lg:h-96" src="{{ vich_uploader_asset(attachment, 'imageFile') | imagine_filter('article') }}" alt="Photo">
+            <img class="object-cover w-full h-56 rounded-lg shadow-lg sm:h-64 md:h-80 lg:h-96"
+                 src="{{ vich_uploader_asset(attachment, 'imageFile') | imagine_filter('article') }}" alt="Photo">
         {% endfor %}
+
         <div class="text-left pt-10 lg:pt-12 article-content">{{ article.content | raw }}</div>
 
-        <div class="max-w-xl mt-10 md:mx-auto sm:text-center lg:max-w-2xl md:mt-12">
-            <a class="btn btn-primary" href="{{ path('article_index') }}">Retour</a>
-        </div>
+        {{ include('article/includes/_comment_form.html.twig') }}
     </section>
 {% endblock %}

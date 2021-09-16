@@ -16,12 +16,15 @@ class UserInfoType extends AbstractType
         $builder
             ->add('lastname', TextType::class, [
                 'label' => 'Nom',
+                'required' => false
             ])
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom',
+                'required' => false
             ])
             ->add('pseudonyme', TextType::class, [
                 'label' => 'Pseudonyme',
+                'required' => false
             ])
             ->add('submit', SubmitType::class, [
                 'row_attr' => ['class' => 'flex'],

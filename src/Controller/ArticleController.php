@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Attachment;
+use App\Entity\Comment;
 use App\Form\ArticleType;
+use App\Form\CommentType;
 use App\Repository\ArticleRepository;
 use App\Service\AttachmentServiceInterface;
 use DateTimeImmutable;
@@ -34,84 +36,31 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'article_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, AttachmentServiceInterface $attachmentService): Response
+    #[Route('/{slug}', name: 'article_show', methods: ['GET', 'POST'])]
+    public function show(Article $article, Request $request): Response
     {
-        $article = new Article();
-        $form = $this->createForm(ArticleType::class, $article);
+        $comments = $article->getComments();
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // On récupère les images transmises
-            $attachments = $form->get('attachment')->getData();
-
-            // On boucle sur les images
-            foreach($attachments as $attachment){
-                $fileUpload = $attachmentService->uploadAttachment($attachment);
-                $article->addAttachment($fileUpload);
-            }
-
+            $comment->setArticle($article);
+            $comment->setUser($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($article);
+            $entityManager->persist($comment);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Nouvel article créé');
-            return $this->redirectToRoute('article_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Commentaire ajouté');
+            return $this->redirectToRoute('article_show', ['slug' => $article->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('article/new.html.twig', [
-            'article' => $article,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{slug}', name: 'article_show', methods: ['GET'])]
-    public function show(Article $article): Response
-    {
         return $this->render('article/show.html.twig', [
+            'form' => $form->createView(),
             'article' => $article,
+            'comments' => $comments
         ]);
-    }
-
-    #[Route('/{id}/edit', name: 'article_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Article $article, AttachmentServiceInterface $attachmentService): Response
-    {
-        $form = $this->createForm(ArticleType::class, $article);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // On récupère les images transmises
-            $attachments = $form->get('attachment')->getData();
-
-            // On boucle sur les images
-            foreach($attachments as $attachment){
-                $fileUpload = $attachmentService->uploadAttachment($attachment);
-                $article->addAttachment($fileUpload);
-            }
-
-            $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'Article modifié !');
-
-            return $this->redirectToRoute('article_edit', ['id' => $article->getId()], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('article/edit.html.twig', [
-            'article' => $article,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'article_delete', methods: ['POST'])]
-    public function delete(Request $request, Article $article): Response
-    {
-        if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($article);
-            $entityManager->flush();
-        }
-        $this->addFlash('success', 'Article supprimé');
-        return $this->redirectToRoute('article_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{id}', name: 'article_delete_attachment', methods: ['DELETE'])]
@@ -122,7 +71,7 @@ class ArticleController extends AbstractController
         // On vérifie si le token est valide
         if($this->isCsrfTokenValid('delete'.$attachment->getId(), $data['_token'])){
             // On récupère le nom de l'image
-            $nom = $attachment->getName();
+            $nom = $attachment->getImage();
 
             // On supprime le fichier
             unlink($this->getParameter('upload_directory').'/'.$nom);
