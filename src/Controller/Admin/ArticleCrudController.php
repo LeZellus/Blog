@@ -34,12 +34,12 @@ class ArticleCrudController extends AbstractCrudController
                 ->setTemplatePath('images.html.twig')
                 ->onlyOnDetail(),
             TextField::new('title', 'Titre'),
-            TextField::new('chapo', 'Description'),
-            TextareaField::new('content', 'Contenu')->setFormType(CKEditorType::class),
+            TextField::new('chapo', 'Description')->hideOnIndex(),
+            TextareaField::new('content', 'Contenu')->setFormType(CKEditorType::class)->hideOnIndex(),
             BooleanField::new('isPublish', 'Public'),
             AssociationField::new('category', 'Catégorie'),
-            DateTimeField::new('createdAt', 'Date Création')->hideOnForm(),
-            DateTimeField::new('updatedAt', 'Date Modification')->hideOnForm(),
+            DateTimeField::new('createdAt', 'Date Création')->hideOnForm()->setFormat('short'),
+            DateTimeField::new('updatedAt', 'Date Modification')->hideOnForm()->setFormat('short'),
         ];
     }
 
