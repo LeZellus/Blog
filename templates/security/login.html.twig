@@ -20,7 +20,7 @@
 
         <form method="post" class="form">
             {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                <div class="text-red-400">Les informations sont érronées, veuillez réessayer</div>
             {% endif %}
 
             {% if app.user %}
