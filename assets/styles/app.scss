@@ -30,11 +30,15 @@ html {
 
 .article-content {
   p {
-    @apply leading-7 text-xl text-gray-800 font-extralight;
+    @apply leading-7 text-xl text-gray-800 font-light;
   }
 
   img {
     @apply my-8 rounded-lg shadow-lg w-full;
+  }
+
+  a{
+    @apply text-custom-400 underline;
   }
 }
 
