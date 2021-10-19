@@ -56,11 +56,17 @@ class ArticleController extends AbstractController
             return $this->redirectToRoute('article_show', ['slug' => $article->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('article/show.html.twig', [
-            'form' => $form->createView(),
-            'article' => $article,
-            'comments' => $comments
-        ]);
+        if($article->getIsPublish() == "0" && !$this->isGranted('ADMIN')){
+            $response = new Response();
+            $response->setStatusCode(403);
+            return $response;
+        } else {
+            return $this->render('article/show.html.twig', [
+                'form' => $form->createView(),
+                'article' => $article,
+                'comments' => $comments
+            ]);
+        }
     }
 
     #[Route('/{id}', name: 'article_delete_attachment', methods: ['DELETE'])]
