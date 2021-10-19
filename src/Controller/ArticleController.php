@@ -56,7 +56,7 @@ class ArticleController extends AbstractController
             return $this->redirectToRoute('article_show', ['slug' => $article->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
-        if($article->getIsPublish() == "0" && !$this->isGranted('ADMIN')){
+        if($article->getIsPublish() == "0" && !$this->isGranted('ROLE_ADMIN')){
             $response = new Response();
             $response->setStatusCode(403);
             return $response;
