@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AttachmentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -27,6 +28,10 @@ class Attachment
 
     /**
      * @Vich\UploadableField(mapping="attachments", fileNameProperty="image")
+     * @Assert\File(
+     *     mimeTypes = {"image/jpeg", "image/gif", "image/png"},
+     *     mimeTypesMessage = "Mauvais type d'image (jpg,gif,png)"
+     * )
      */
     private $imageFile;
 
