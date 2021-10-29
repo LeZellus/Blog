@@ -29,6 +29,10 @@ html {
 }
 
 .article-content {
+
+  h2{
+    @apply text-xl text-custom-400 font-bold;
+  }
   p {
     @apply leading-7 text-xl text-gray-800 font-light;
   }
@@ -39,6 +43,17 @@ html {
 
   a{
     @apply text-custom-400 underline;
+  }
+
+  ul, ol{
+    @apply list-inside;
+  }
+
+  ul{
+    @apply list-disc;
+  }
+  ol {
+    @apply list-decimal;
   }
 }
 

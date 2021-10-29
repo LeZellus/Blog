@@ -3,11 +3,14 @@ twig:
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
 fos_ck_editor:
+    base_path: 'bundles/fosckeditor'
+    js_path: 'bundles/fosckeditor/ckeditor.js'
+
     input_sync: true
     default_config: main_config
     configs:
         main_config:
             toolbar:
-                - { name: "styles", items: ['Bold', 'Italic', 'Underline', 'Link', 'BulletedList','Image'] }
+                - { name: "styles", items: ['Format', 'Bold', 'Italic', 'Underline', 'Link', 'BulletedList', 'NumberedList','Image', "Youtube"] }
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: [ ]
