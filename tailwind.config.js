@@ -10,9 +10,13 @@ module.exports = {
       'text-pink-500',
       'text-yellow-500',
       'text-green-500',
+      'text-blue-500',
+      'text-purple-500',
       'bg-pink-100',
       'bg-yellow-100',
       'bg-green-100',
+      'bg-blue-100',
+      'bg-purple-100'
     ],
   },
   theme: {

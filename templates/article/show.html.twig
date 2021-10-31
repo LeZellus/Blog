@@ -10,9 +10,8 @@
     <meta property="og:title" content="{{ article.title }}"/>
     <meta property="og:description" content="{{ article.chapo }}"/>
     {% for attachment in article.attachments %}
-
-        {# <meta property="og:image" #}
-        {# content="{{ app.request.schemeAndHttpHost ~ app.request.baseUrl }}{{ asset('uploads/') ~ attachment.name }}"/> #}
+    <meta property="og:image"
+          content="{{ vich_uploader_asset(attachment, 'imageFile') | imagine_filter('article') }}"/>
     {% endfor %}
 {% endblock %}
 
