@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Article;
 use App\Form\AttachmentType;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -53,6 +54,14 @@ class ArticleCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions
     {
-        return $actions->add(CRUD::PAGE_INDEX, 'detail');
+        $sendInvoice = Action::new('Lien vers l\'article', 'Article', 'far fa-newspaper')
+            ->linkToRoute('article_show', function (Article $article): array {
+                return [
+                    'slug' => $article->getSlug(),
+                ];
+            })->displayAsButton()->setCssClass('btn btn-secondary');
+
+        return $actions->add(CRUD::PAGE_INDEX, 'detail')
+            ->add(CRUD::PAGE_EDIT, $sendInvoice);
     }
 }
