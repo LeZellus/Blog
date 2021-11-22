@@ -54,12 +54,12 @@ class ArticleCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions
     {
-        $sendInvoice = Action::new('Lien vers l\'article', 'Article', 'far fa-newspaper')
+        $sendInvoice = Action::new('me-3', 'Article', 'far fa-newspaper')
             ->linkToRoute('article_show', function (Article $article): array {
                 return [
                     'slug' => $article->getSlug(),
                 ];
-            })->displayAsButton()->setCssClass('btn btn-secondary');
+            })->setCssClass("btn btn-primary");
 
         return $actions->add(CRUD::PAGE_INDEX, 'detail')
             ->add(CRUD::PAGE_EDIT, $sendInvoice);
